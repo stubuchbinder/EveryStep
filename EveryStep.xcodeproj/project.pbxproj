@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		206EC9CC1B8F5E9B0073D766 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9CB1B8F5E9B0073D766 /* AppDelegate.swift */; };
-		206EC9CE1B8F5E9B0073D766 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9CD1B8F5E9B0073D766 /* ViewController.swift */; };
-		206EC9D11B8F5E9B0073D766 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 206EC9CF1B8F5E9B0073D766 /* Main.storyboard */; };
-		206EC9D31B8F5E9B0073D766 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 206EC9D21B8F5E9B0073D766 /* Assets.xcassets */; };
-		206EC9D61B8F5E9B0073D766 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 206EC9D41B8F5E9B0073D766 /* LaunchScreen.storyboard */; };
+		2062CACC1BB34E770031DF55 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; settings = {ASSET_TAGS = (); }; };
+		2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; settings = {ASSET_TAGS = (); }; };
+		2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; settings = {ASSET_TAGS = (); }; };
+		206EC9E11B8F5EE40073D766 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 206EC9DE1B8F5EE40073D766 /* Assets.xcassets */; };
+		206EC9E21B8F5EE40073D766 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 206EC9DF1B8F5EE40073D766 /* LaunchScreen.storyboard */; };
+		206EC9E31B8F5EE40073D766 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 206EC9E01B8F5EE40073D766 /* Main.storyboard */; };
+		206EC9E71B8F5F0D0073D766 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9E51B8F5F0D0073D766 /* AppDelegate.swift */; };
+		206EC9E91B8F5F3A0073D766 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9E81B8F5F3A0073D766 /* ActivityViewController.swift */; };
+		206EC9EB1B8F5F530073D766 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9EA1B8F5F530073D766 /* SettingsViewController.swift */; };
+		206EC9ED1B8F60630073D766 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9EC1B8F60630073D766 /* ProgressView.swift */; };
+		206EC9F31B8F60F80073D766 /* UIColor+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9F21B8F60F80073D766 /* UIColor+EveryStep.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2062CACB1BB34E770031DF55 /* GoalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalButton.swift; sourceTree = "<group>"; };
+		2062CACD1BB350B70031DF55 /* ESUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESUserController.swift; sourceTree = "<group>"; };
+		2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+EveryStep.swift"; sourceTree = "<group>"; };
 		206EC9C81B8F5E9B0073D766 /* EveryStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		206EC9CB1B8F5E9B0073D766 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		206EC9CD1B8F5E9B0073D766 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		206EC9D01B8F5E9B0073D766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		206EC9D21B8F5E9B0073D766 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		206EC9D51B8F5E9B0073D766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		206EC9D71B8F5E9B0073D766 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		206EC9DE1B8F5EE40073D766 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		206EC9DF1B8F5EE40073D766 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		206EC9E01B8F5EE40073D766 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		206EC9E51B8F5F0D0073D766 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		206EC9E81B8F5F3A0073D766 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		206EC9EA1B8F5F530073D766 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		206EC9EC1B8F60630073D766 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		206EC9F21B8F60F80073D766 /* UIColor+EveryStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+EveryStep.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +66,60 @@
 		206EC9CA1B8F5E9B0073D766 /* EveryStep */ = {
 			isa = PBXGroup;
 			children = (
-				206EC9CB1B8F5E9B0073D766 /* AppDelegate.swift */,
-				206EC9CD1B8F5E9B0073D766 /* ViewController.swift */,
-				206EC9CF1B8F5E9B0073D766 /* Main.storyboard */,
-				206EC9D21B8F5E9B0073D766 /* Assets.xcassets */,
-				206EC9D41B8F5E9B0073D766 /* LaunchScreen.storyboard */,
+				206EC9EE1B8F60D90073D766 /* Utils */,
+				206EC9E41B8F5F0D0073D766 /* Application */,
+				206EC9E61B8F5F0D0073D766 /* Controllers */,
+				206EC9DD1B8F5EE40073D766 /* UI */,
 				206EC9D71B8F5E9B0073D766 /* Info.plist */,
 			);
 			path = EveryStep;
+			sourceTree = "<group>";
+		};
+		206EC9DD1B8F5EE40073D766 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				206EC9DE1B8F5EE40073D766 /* Assets.xcassets */,
+				206EC9DF1B8F5EE40073D766 /* LaunchScreen.storyboard */,
+				206EC9E01B8F5EE40073D766 /* Main.storyboard */,
+				206EC9EC1B8F60630073D766 /* ProgressView.swift */,
+				2062CACB1BB34E770031DF55 /* GoalButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		206EC9E41B8F5F0D0073D766 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				206EC9E51B8F5F0D0073D766 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		206EC9E61B8F5F0D0073D766 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				206EC9E81B8F5F3A0073D766 /* ActivityViewController.swift */,
+				206EC9EA1B8F5F530073D766 /* SettingsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		206EC9EE1B8F60D90073D766 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				206EC9EF1B8F60D90073D766 /* Extensions */,
+				2062CACD1BB350B70031DF55 /* ESUserController.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		206EC9EF1B8F60D90073D766 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				206EC9F21B8F60F80073D766 /* UIColor+EveryStep.swift */,
+				2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +153,7 @@
 				TargetAttributes = {
 					206EC9C71B8F5E9B0073D766 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = BH392B46K8;
 					};
 				};
 			};
@@ -121,9 +180,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				206EC9D61B8F5E9B0073D766 /* LaunchScreen.storyboard in Resources */,
-				206EC9D31B8F5E9B0073D766 /* Assets.xcassets in Resources */,
-				206EC9D11B8F5E9B0073D766 /* Main.storyboard in Resources */,
+				206EC9E31B8F5EE40073D766 /* Main.storyboard in Resources */,
+				206EC9E11B8F5EE40073D766 /* Assets.xcassets in Resources */,
+				206EC9E21B8F5EE40073D766 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,31 +193,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				206EC9CE1B8F5E9B0073D766 /* ViewController.swift in Sources */,
-				206EC9CC1B8F5E9B0073D766 /* AppDelegate.swift in Sources */,
+				2062CACC1BB34E770031DF55 /* GoalButton.swift in Sources */,
+				2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */,
+				206EC9E71B8F5F0D0073D766 /* AppDelegate.swift in Sources */,
+				206EC9ED1B8F60630073D766 /* ProgressView.swift in Sources */,
+				206EC9F31B8F60F80073D766 /* UIColor+EveryStep.swift in Sources */,
+				206EC9E91B8F5F3A0073D766 /* ActivityViewController.swift in Sources */,
+				206EC9EB1B8F5F530073D766 /* SettingsViewController.swift in Sources */,
+				2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		206EC9CF1B8F5E9B0073D766 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				206EC9D01B8F5E9B0073D766 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		206EC9D41B8F5E9B0073D766 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				206EC9D51B8F5E9B0073D766 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		206EC9D81B8F5E9B0073D766 /* Debug */ = {
@@ -246,10 +292,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stuart Buchbinder (PJMAZPXJ4F)";
 				INFOPLIST_FILE = EveryStep/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb6adb6b-08ac-41c5-92bd-9a13e9750042";
 			};
 			name = Debug;
 		};
@@ -257,6 +305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = EveryStep/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep;
@@ -283,6 +332,7 @@
 				206EC9DC1B8F5E9B0073D766 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
