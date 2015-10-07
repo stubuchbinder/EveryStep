@@ -90,11 +90,24 @@ class ESUser : NSObject, NSCoding {
         }
     }
     
+    var currentCalories : Double! {
+        didSet {
+            ESUserController.defaultController.saveUser(completion: nil)
+        }
+    }
+    
+    var idleTime : Int32 = 60 {
+        didSet {
+            ESUserController.defaultController.saveUser(completion: nil)
+        }
+    }
     
     required init(coder aDecoder: NSCoder) {
         self.currentGoal = aDecoder.decodeObjectForKey("currentGoal") as! NSNumber
         self.currentSteps = aDecoder.decodeObjectForKey("currentSteps") as! NSNumber
         self.currentDistance = aDecoder.decodeObjectForKey("currentDistance") as! NSNumber
+        self.currentCalories = aDecoder.decodeDoubleForKey("currentCalories")
+        self.idleTime = aDecoder.decodeIntForKey("idleTime")
     }
     
     override init() {
@@ -102,6 +115,8 @@ class ESUser : NSObject, NSCoding {
         self.currentGoal = 10000
         self.currentDistance = 0
         self.currentSteps = 0
+        self.currentCalories = 0.0
+        self.idleTime = 60
         super.init()
     }
     
@@ -109,5 +124,7 @@ class ESUser : NSObject, NSCoding {
         aCoder.encodeObject(currentGoal, forKey: "currentGoal")
         aCoder.encodeObject(currentSteps, forKey: "currentSteps")
         aCoder.encodeObject(currentDistance, forKey: "currentDistance")
+        aCoder.encodeDouble(currentCalories, forKey: "currentCalories")
+        aCoder.encodeInt(idleTime, forKey: "idleTime")
     }
 }

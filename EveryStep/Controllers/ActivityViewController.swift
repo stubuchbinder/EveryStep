@@ -16,47 +16,26 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var stepCountLabel: UILabel!
     @IBOutlet weak var goalButton: GoalButton!
     @IBOutlet weak var progressView: ProgressView!
-    
-//    var totalSteps : NSNumber {
-//        set {
-//            currentUser.currentSteps = totalSteps
-//        } get {
-//            return currentUser.currentSteps
-//        }
-//    }
-//    
-//    var totalDistance : NSNumber {
-//        set {
-//            currentUser.currentDistance = totalSteps
-//        } get {
-//            return currentUser.currentDistance
-//        }
-//    }
-//    
+   
     let currentUser = ESUserController.defaultController.currentUser()
     let pedometer = CMPedometer()
+    let healthKitManager = HKManager.defaultManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         
         NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note : NSNotification) -> Void in
             self.loadData()
         }
-
-    
     }
     
     func midnightOfToday() -> NSDate {
-        let cal = NSCalendar.currentCalendar()
-  
-        let comps = cal.components([NSCalendarUnit.Year, NSCalendarUnit.Month ,NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Second], fromDate: NSDate())
-        comps.hour = 0
-        comps.minute = 0
-        comps.second = 0
-        let timeZone = NSTimeZone.systemTimeZone()
-        cal.timeZone = timeZone
-        return cal.dateFromComponents(comps)!
+        
+        let calendar = NSCalendar.currentCalendar()
+        let now = NSDate()
+        
+        let startDate : NSDate = calendar.startOfDayForDate(now)
+        return startDate
     }
     
     
@@ -78,20 +57,51 @@ class ActivityViewController: UIViewController {
                 if let distance = data?.distance {
                     self.currentUser.currentDistance = distance
                 }
-                
+ 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.updateProgress()
+                    (UIApplication.sharedApplication().delegate as! AppDelegate).sheduleIdleTimerNotification()
                 })
 
             })
-
         }
+        
+        if healthKitManager.isAuthorized {
+            loadCalories()
+        } else {
+            healthKitManager.authorizeHealthKit({ (success, error) -> Void in
+                if success {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.loadCalories()
+                    })
+                }
+            })
+        }
+        
     }
+    
+    func loadCalories() {
+        
+        healthKitManager.activeEnergyBurned { (success, result) -> Void in
+            if success == true {
+                let caloriesBurned = result as? Double
+                self.currentUser.currentCalories = caloriesBurned
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.updateProgress()
+            })
+        }
+        
+    }
+    
+    
     func updateProgress() {
         
         let steps = currentUser.currentSteps
         let distance = currentUser.currentDistance
         let goal = currentUser.currentGoal
+        let calories = currentUser.currentCalories
         
         // step count
         self.stepCountLabel.text = steps.commaDelimitedString()
@@ -103,9 +113,16 @@ class ActivityViewController: UIViewController {
         // update the current goal
         goalButton.setTitle("Goal - \(goal.commaDelimitedString())", forState: .Normal)
         
+        // Distance
         let miles = distance.doubleValue * 0.00062137
         let mileString = NSString(format: "%0.1f", miles)
         distanceLabel.text = "\(mileString) mi"
+        
+        calorieLabel.hidden = (calories == 0.0)
+        // Calories
+        let calorieString = NSString(format: "%1.0f", (calories / 1000))
+        calorieLabel.text = "\(calorieString) cal"
+        
     }
 
     /**
