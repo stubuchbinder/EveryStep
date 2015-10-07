@@ -18,7 +18,8 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var progressView: ProgressView!
    
     let currentUser = ESUserController.defaultController.currentUser()
-    let pedometer = CMPedometer()
+    
+    let pedometerManager = CMManager.defaultManager
     let healthKitManager = HKManager.defaultManager
     
     override func viewDidLoad() {
@@ -41,30 +42,33 @@ class ActivityViewController: UIViewController {
     
     func loadData() {
         
-        if CMPedometer.isStepCountingAvailable() && CMPedometer.isDistanceAvailable() {
+        // Load step count and distance if it's available
+        if pedometerManager.isStepCountingAvailable() {
             
-            pedometer.queryPedometerDataFromDate(midnightOfToday(), toDate: NSDate(), withHandler: { (data: CMPedometerData?, error : NSError?) -> Void in
-                if let err = error {
-                    print("Error: \(err)")
-                    return
-                }
-                
-                if let steps = data?.numberOfSteps {
+            pedometerManager.dailyPedometerData({ (success, result) -> Void in
+                if success {
                     
-                    self.currentUser.currentSteps = steps
-                }
-                
-                if let distance = data?.distance {
-                    self.currentUser.currentDistance = distance
-                }
- 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.updateProgress()
-                    (UIApplication.sharedApplication().delegate as! AppDelegate).sheduleIdleTimerNotification()
-                })
+                    if let data = result as? CMPedometerData {
+                        self.currentUser.currentSteps = data.numberOfSteps
+                        self.currentUser.currentDistance = data.distance
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.updateProgress()
+                            (UIApplication.sharedApplication().delegate as! AppDelegate).sheduleIdleTimerNotification()
 
+                        })
+                        
+                    }
+                } else {
+                    // Alert Error
+                }
             })
+        } else {
+            // Alert that step counting is not available on this device
+            
         }
+        
+        // Load calorie burn
         
         if healthKitManager.isAuthorized {
             loadCalories()
@@ -77,9 +81,10 @@ class ActivityViewController: UIViewController {
                 }
             })
         }
-        
-    }
     
+    }
+
+
     func loadCalories() {
         
         healthKitManager.activeEnergyBurned { (success, result) -> Void in

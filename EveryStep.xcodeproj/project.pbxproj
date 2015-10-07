@@ -15,6 +15,7 @@
 		20203A0C1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; settings = {ASSET_TAGS = (); }; };
 		202751691BC5726900893C47 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; settings = {ASSET_TAGS = (); }; };
 		2027516A1BC572C300893C47 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; settings = {ASSET_TAGS = (); }; };
+		2027516C1BC578BA00893C47 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2027516B1BC578BA00893C47 /* HealthKit.framework */; };
 		2062CACC1BB34E770031DF55 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; };
 		2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
 		2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; };
@@ -84,6 +85,8 @@
 		20203A051BC565C4008BBDEB /* DistanceInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceInterfaceController.swift; sourceTree = "<group>"; };
 		20203A071BC565CE008BBDEB /* CaloriesInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaloriesInterfaceController.swift; sourceTree = "<group>"; };
 		20203A0A1BC5679E008BBDEB /* CMManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMManager.swift; sourceTree = "<group>"; };
+		2027516B1BC578BA00893C47 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		2027516D1BC578BA00893C47 /* watchapp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchapp Extension.entitlements"; sourceTree = "<group>"; };
 		2062CACB1BB34E770031DF55 /* GoalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalButton.swift; sourceTree = "<group>"; };
 		2062CACD1BB350B70031DF55 /* ESUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESUserController.swift; sourceTree = "<group>"; };
 		2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+EveryStep.swift"; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2027516C1BC578BA00893C47 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +137,7 @@
 		206EC9BF1B8F5E9B0073D766 = {
 			isa = PBXGroup;
 			children = (
+				2027516B1BC578BA00893C47 /* HealthKit.framework */,
 				20CEE3731BB46F5D007D069B /* HealthKit.framework */,
 				206EC9CA1B8F5E9B0073D766 /* EveryStep */,
 				2090315E1BBC803800ED697F /* watchapp */,
@@ -226,6 +231,7 @@
 		2090316D1BBC803800ED697F /* watchapp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2027516D1BC578BA00893C47 /* watchapp Extension.entitlements */,
 				2090316E1BBC803800ED697F /* InterfaceController.swift */,
 				209031701BBC803800ED697F /* ExtensionDelegate.swift */,
 				209031721BBC803800ED697F /* Assets.xcassets */,
@@ -321,6 +327,12 @@
 					};
 					209031681BBC803800ED697F = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = BH392B46K8;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -549,10 +561,14 @@
 		209031791BBC803800ED697F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "watchapp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -563,10 +579,14 @@
 		2090317A1BBC803800ED697F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "watchapp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
