@@ -16,10 +16,28 @@ class CaloriesInterfaceController: WKInterfaceController {
     
     var caloriesBurned : Double = 0
     @IBOutlet var calorieLabel: WKInterfaceLabel!
+    
+    override func awakeWithContext(context: AnyObject?) {
+        super.awakeWithContext(context)
+        updateProgress()
+    }
 
-    override func didAppear() {
-        super.didAppear()
-        loadData()
+    
+    override func willActivate() {
+        super.willActivate()
+        
+        if healthKitManager.isAuthorized {
+            loadData()
+        } else {
+            healthKitManager.authorizeHealthKit({ (success, error) -> Void in
+                if success {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.loadData()
+                    })
+                }
+            })
+        }
+        
     }
     
     func loadData() {

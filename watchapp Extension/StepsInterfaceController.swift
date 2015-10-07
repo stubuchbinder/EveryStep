@@ -17,10 +17,14 @@ class StepsInterfaceController: WKInterfaceController {
     let currentUser = ESUserController.defaultController.currentUser()
 
     @IBOutlet var stepLabel: WKInterfaceLabel!
-
-
-    override func didAppear() {
-        super.didAppear()
+    
+    override func awakeWithContext(context: AnyObject?) {
+        super.awakeWithContext(context)
+        updateProgress()
+    }
+    
+    override func willActivate() {
+        super.willActivate()
         loadData()
     }
 

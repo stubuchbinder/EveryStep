@@ -16,6 +16,7 @@
 		202751691BC5726900893C47 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; settings = {ASSET_TAGS = (); }; };
 		2027516A1BC572C300893C47 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; settings = {ASSET_TAGS = (); }; };
 		2027516C1BC578BA00893C47 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2027516B1BC578BA00893C47 /* HealthKit.framework */; };
+		2042645D1BC5B00800FAE77F /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042645C1BC5B00800FAE77F /* ComplicationController.swift */; settings = {ASSET_TAGS = (); }; };
 		2062CACC1BB34E770031DF55 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; };
 		2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
 		2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; };
@@ -87,6 +88,7 @@
 		20203A0A1BC5679E008BBDEB /* CMManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMManager.swift; sourceTree = "<group>"; };
 		2027516B1BC578BA00893C47 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		2027516D1BC578BA00893C47 /* watchapp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchapp Extension.entitlements"; sourceTree = "<group>"; };
+		2042645C1BC5B00800FAE77F /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		2062CACB1BB34E770031DF55 /* GoalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalButton.swift; sourceTree = "<group>"; };
 		2062CACD1BB350B70031DF55 /* ESUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESUserController.swift; sourceTree = "<group>"; };
 		2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+EveryStep.swift"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				20203A031BC565B6008BBDEB /* StepsInterfaceController.swift */,
 				20203A051BC565C4008BBDEB /* DistanceInterfaceController.swift */,
 				20203A071BC565CE008BBDEB /* CaloriesInterfaceController.swift */,
+				2042645C1BC5B00800FAE77F /* ComplicationController.swift */,
 			);
 			path = "watchapp Extension";
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				20203A091BC565D7008BBDEB /* HKManager.swift in Sources */,
 				202751691BC5726900893C47 /* ESUserController.swift in Sources */,
 				209031711BBC803800ED697F /* ExtensionDelegate.swift in Sources */,
+				2042645D1BC5B00800FAE77F /* ComplicationController.swift in Sources */,
 				2090316F1BBC803800ED697F /* InterfaceController.swift in Sources */,
 				20203A041BC565B6008BBDEB /* StepsInterfaceController.swift in Sources */,
 			);
@@ -561,6 +565,7 @@
 		209031791BBC803800ED697F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
@@ -579,6 +584,7 @@
 		2090317A1BBC803800ED697F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";

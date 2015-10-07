@@ -22,8 +22,13 @@ class DistanceInterfaceController: WKInterfaceController {
     
     let pedometer = CMPedometer()
     
-    override func didAppear() {
-        super.didAppear()
+    override func awakeWithContext(context: AnyObject?) {
+        super.awakeWithContext(context)
+        updateProgress()
+    }
+    
+    override func willActivate() {
+        super.willActivate()
         loadData()
     }
     
