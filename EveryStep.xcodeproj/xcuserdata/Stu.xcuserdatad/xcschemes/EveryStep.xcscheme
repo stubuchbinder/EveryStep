@@ -20,6 +20,34 @@
                ReferencedContainer = "container:EveryStep.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2090315C1BBC803800ED697F"
+               BuildableName = "watchapp.app"
+               BlueprintName = "watchapp"
+               ReferencedContainer = "container:EveryStep.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "209031681BBC803800ED697F"
+               BuildableName = "watchapp Extension.appex"
+               BlueprintName = "watchapp Extension"
+               ReferencedContainer = "container:EveryStep.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

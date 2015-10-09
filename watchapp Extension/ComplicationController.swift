@@ -34,7 +34,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Population
     
     func getCurrentTimelineEntryForComplication(complication: CLKComplication, withHandler handler: ((CLKComplicationTimelineEntry?) -> Void)) {
-        handler(nil)
+        handler(timelineEntryForStepCount())
     }
     
     func getTimelineEntriesForComplication(complication: CLKComplication, beforeDate date: NSDate, limit: Int, withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
@@ -53,17 +53,27 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     // MARK: - Placeholder Templates
     
+    /** Run once per initialization */
     func getPlaceholderTemplateForComplication(complication: CLKComplication, withHandler handler: (CLKComplicationTemplate?) -> Void) {
         
-        let headerTextProvider = CLKSimpleTextProvider(text: "steps")
-        let body1TextProvider = CLKSimpleTextProvider(text: "miles")
-        let body2TextProvider = CLKSimpleTextProvider(text: "calories")
-        
         let template = CLKComplicationTemplateModularLargeStandardBody()
-        template.headerTextProvider = headerTextProvider
-        template.body1TextProvider = body1TextProvider
-        template.body2TextProvider = body2TextProvider
+        template.headerTextProvider = CLKSimpleTextProvider(text: "steps: 0", shortText: "step")
+        template.body1TextProvider = CLKSimpleTextProvider(text: "calories: 0", shortText: "cal")
+        template.body2TextProvider = CLKSimpleTextProvider(text: "miles: 0", shortText: "mi")
         
         handler(template)
+    }
+    
+    
+    func timelineEntryForStepCount() -> CLKComplicationTimelineEntry? {
+        let template = CLKComplicationTemplateModularLargeStandardBody()
+        
+        template.headerTextProvider = CLKSimpleTextProvider(text: "steps: 0", shortText: "step")
+        template.body1TextProvider = CLKSimpleTextProvider(text: "calories: 0", shortText: "cal")
+        template.body2TextProvider = CLKSimpleTextProvider(text: "miles: 0", shortText: "mi")
+        
+        let date = NSDate().dateByAddingTimeInterval(-60)
+        return CLKComplicationTimelineEntry(date: date, complicationTemplate: template)
+        
     }
 }

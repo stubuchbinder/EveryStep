@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import WatchConnectivity
 
 class ActivityViewController: UIViewController {
 
@@ -22,13 +23,61 @@ class ActivityViewController: UIViewController {
     let pedometerManager = CMManager.defaultManager
     let healthKitManager = HKManager.defaultManager
     
+    var session : WCSession?
+    
+    var steps = 0 {
+        didSet {
+            currentUser.currentSteps = steps
+            updateProgress()
+        }
+    }
+    
+    var distance : Double = 0.0 {
+        didSet {
+            currentUser.currentDistance = distance
+            updateProgress()
+        }
+    }
+    
+    var calories : Double = 0.0 {
+        didSet {
+            currentUser.currentCalories = calories
+            updateProgress()
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        startSession()
+        
         
         NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note : NSNotification) -> Void in
             self.loadData()
         }
+        
+        
     }
+    
+    private func startSession() {
+        if WCSession.isSupported() {
+            session = WCSession.defaultSession()
+            session?.delegate = self
+            session?.activateSession()
+        }
+    }
+    
+    
+    private func broadcast() {
+        if let session = session where session.reachable {
+            session.sendMessage(["steps": steps, "calories": calories, "distance": distance, "lastUpdate" : NSDate()], replyHandler: nil, errorHandler: { (error) -> Void in
+                print(error)
+            })
+        }
+        
+    }
+    
     
     func midnightOfToday() -> NSDate {
         
@@ -49,11 +98,13 @@ class ActivityViewController: UIViewController {
                 if success {
                     
                     if let data = result as? CMPedometerData {
-                        self.currentUser.currentSteps = data.numberOfSteps
-                        self.currentUser.currentDistance = data.distance
+                        
+                        self.steps = data.numberOfSteps.integerValue
+                        self.distance = data.distance! as Double
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.updateProgress()
+                            self.broadcast()
                             (UIApplication.sharedApplication().delegate as! AppDelegate).sheduleIdleTimerNotification()
 
                         })
@@ -90,11 +141,12 @@ class ActivityViewController: UIViewController {
         healthKitManager.activeEnergyBurned { (success, result) -> Void in
             if success == true {
                 let caloriesBurned = result as? Double
-                self.currentUser.currentCalories = caloriesBurned
+                self.calories = caloriesBurned!
             }
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.updateProgress()
+                self.broadcast()
             })
         }
         
@@ -103,9 +155,9 @@ class ActivityViewController: UIViewController {
     
     func updateProgress() {
         
-        let steps = currentUser.currentSteps
+        let steps = NSNumber(integer: currentUser.currentSteps)
         let distance = currentUser.currentDistance
-        let goal = currentUser.currentGoal
+        let goal = NSNumber(integer: currentUser.currentGoal)
         let calories = currentUser.currentCalories
         
         // step count
@@ -119,7 +171,7 @@ class ActivityViewController: UIViewController {
         goalButton.setTitle("Goal - \(goal.commaDelimitedString())", forState: .Normal)
         
         // Distance
-        let miles = distance.doubleValue * 0.00062137
+        let miles = distance * 0.00062137
         let mileString = NSString(format: "%0.1f", miles)
         distanceLabel.text = "\(mileString) mi"
         
@@ -144,7 +196,7 @@ class ActivityViewController: UIViewController {
             
             let goal = textField.text! as NSString
             
-            self.currentUser.currentGoal = NSNumber(int: goal.intValue)
+            self.currentUser.currentGoal = goal.integerValue
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.updateProgress()
@@ -166,4 +218,26 @@ class ActivityViewController: UIViewController {
         
     }
 
+}
+
+extension ActivityViewController : WCSessionDelegate {
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+        
+        if let lastUpdate = message["lastUpdate"] as? NSDate {
+            if lastUpdate.compare(currentUser.lastUpdate!) == NSComparisonResult.OrderedDescending {
+                if let steps = message["steps"] as? Int {
+                    self.steps = steps
+                }
+                
+                if let distance = message["distance"] as? Double {
+                    self.distance = distance
+                }
+                
+                if let calories = message["calories"] as? Double {
+                    self.calories = calories
+                }
+            }
+        }
+    
+    }
 }

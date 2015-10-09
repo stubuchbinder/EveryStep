@@ -70,21 +70,21 @@ class ESUserController {
 }
 
 
-class ESUser : NSObject, NSCoding {
+class ESUser : NSObject {
     
-    var currentGoal : NSNumber!{
+    var currentGoal : Int!{
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
-    var currentSteps : NSNumber! {
+    var currentSteps : Int! {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
-    var currentDistance : NSNumber! {
+    var currentDistance : Double! {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
@@ -96,35 +96,45 @@ class ESUser : NSObject, NSCoding {
         }
     }
     
-    var idleTime : Int32 = 60 {
+    var idleTime : Int32 = 60 * 60 {
+        didSet {
+            ESUserController.defaultController.saveUser(completion: nil)
+        }
+    }
+    
+    var lastUpdate : NSDate? {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
     required init(coder aDecoder: NSCoder) {
-        self.currentGoal = aDecoder.decodeObjectForKey("currentGoal") as! NSNumber
-        self.currentSteps = aDecoder.decodeObjectForKey("currentSteps") as! NSNumber
-        self.currentDistance = aDecoder.decodeObjectForKey("currentDistance") as! NSNumber
+        self.currentGoal = aDecoder.decodeObjectForKey("currentGoal") as! Int
+        self.currentSteps = aDecoder.decodeObjectForKey("currentSteps") as! Int
+        self.lastUpdate = aDecoder.decodeObjectForKey("lastUpdate") as? NSDate
+        self.currentDistance = aDecoder.decodeDoubleForKey("currentDistance")
         self.currentCalories = aDecoder.decodeDoubleForKey("currentCalories")
         self.idleTime = aDecoder.decodeIntForKey("idleTime")
+    
     }
     
     override init() {
         
         self.currentGoal = 10000
-        self.currentDistance = 0
+        self.currentDistance = 0.0
         self.currentSteps = 0
         self.currentCalories = 0.0
-        self.idleTime = 60
+        self.idleTime = 60 * 60
+        self.lastUpdate = NSDate()
         super.init()
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(currentGoal, forKey: "currentGoal")
-        aCoder.encodeObject(currentSteps, forKey: "currentSteps")
+        aCoder.encodeInteger(currentGoal, forKey: "currentGoal")
+        aCoder.encodeInteger(currentSteps, forKey: "currentSteps")
         aCoder.encodeObject(currentDistance, forKey: "currentDistance")
         aCoder.encodeDouble(currentCalories, forKey: "currentCalories")
         aCoder.encodeInt(idleTime, forKey: "idleTime")
+        aCoder.encodeObject(lastUpdate, forKey: "lastUpdate")
     }
 }

@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20203A041BC565B6008BBDEB /* StepsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A031BC565B6008BBDEB /* StepsInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
-		20203A061BC565C4008BBDEB /* DistanceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A051BC565C4008BBDEB /* DistanceInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
-		20203A081BC565CE008BBDEB /* CaloriesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A071BC565CE008BBDEB /* CaloriesInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
 		20203A091BC565D7008BBDEB /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; settings = {ASSET_TAGS = (); }; };
 		20203A0B1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; settings = {ASSET_TAGS = (); }; };
 		20203A0C1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; settings = {ASSET_TAGS = (); }; };
@@ -82,9 +79,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		20203A031BC565B6008BBDEB /* StepsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsInterfaceController.swift; sourceTree = "<group>"; };
-		20203A051BC565C4008BBDEB /* DistanceInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceInterfaceController.swift; sourceTree = "<group>"; };
-		20203A071BC565CE008BBDEB /* CaloriesInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaloriesInterfaceController.swift; sourceTree = "<group>"; };
 		20203A0A1BC5679E008BBDEB /* CMManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMManager.swift; sourceTree = "<group>"; };
 		2027516B1BC578BA00893C47 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		2027516D1BC578BA00893C47 /* watchapp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchapp Extension.entitlements"; sourceTree = "<group>"; };
@@ -238,9 +232,6 @@
 				209031701BBC803800ED697F /* ExtensionDelegate.swift */,
 				209031721BBC803800ED697F /* Assets.xcassets */,
 				209031741BBC803800ED697F /* Info.plist */,
-				20203A031BC565B6008BBDEB /* StepsInterfaceController.swift */,
-				20203A051BC565C4008BBDEB /* DistanceInterfaceController.swift */,
-				20203A071BC565CE008BBDEB /* CaloriesInterfaceController.swift */,
 				2042645C1BC5B00800FAE77F /* ComplicationController.swift */,
 			);
 			path = "watchapp Extension";
@@ -411,16 +402,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20203A061BC565C4008BBDEB /* DistanceInterfaceController.swift in Sources */,
 				2027516A1BC572C300893C47 /* NSNumber+EveryStep.swift in Sources */,
 				20203A0C1BC5679E008BBDEB /* CMManager.swift in Sources */,
-				20203A081BC565CE008BBDEB /* CaloriesInterfaceController.swift in Sources */,
 				20203A091BC565D7008BBDEB /* HKManager.swift in Sources */,
 				202751691BC5726900893C47 /* ESUserController.swift in Sources */,
 				209031711BBC803800ED697F /* ExtensionDelegate.swift in Sources */,
 				2042645D1BC5B00800FAE77F /* ComplicationController.swift in Sources */,
 				2090316F1BBC803800ED697F /* InterfaceController.swift in Sources */,
-				20203A041BC565B6008BBDEB /* StepsInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
