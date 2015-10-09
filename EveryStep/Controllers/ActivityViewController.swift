@@ -154,31 +154,35 @@ class ActivityViewController: UIViewController {
     
     
     func updateProgress() {
+        // make sure UI updates happen on the main thread
         
-        let steps = NSNumber(integer: currentUser.currentSteps)
-        let distance = currentUser.currentDistance
-        let goal = NSNumber(integer: currentUser.currentGoal)
-        let calories = currentUser.currentCalories
-        
-        // step count
-        self.stepCountLabel.text = steps.commaDelimitedString()
-        
-        // progress
-        let progress = Float(steps.doubleValue / goal.doubleValue)
-        progressView.progress = progress
-        
-        // update the current goal
-        goalButton.setTitle("Goal - \(goal.commaDelimitedString())", forState: .Normal)
-        
-        // Distance
-        let miles = distance * 0.00062137
-        let mileString = NSString(format: "%0.1f", miles)
-        distanceLabel.text = "\(mileString) mi"
-        
-        calorieLabel.hidden = (calories == 0.0)
-        // Calories
-        let calorieString = NSString(format: "%1.0f", (calories / 1000))
-        calorieLabel.text = "\(calorieString) cal"
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            let steps = NSNumber(integer: self.currentUser.currentSteps)
+            let distance = self.currentUser.currentDistance
+            let goal = NSNumber(integer: self.currentUser.currentGoal)
+            let calories = self.currentUser.currentCalories
+            
+            // step count
+            self.stepCountLabel.text = steps.commaDelimitedString()
+            
+            // progress
+            let progress = Float(steps.doubleValue / goal.doubleValue)
+            self.progressView.progress = progress
+            
+            // update the current goal
+            self.goalButton.setTitle("Goal - \(goal.commaDelimitedString())", forState: .Normal)
+            
+            // Distance
+            let miles = distance * 0.00062137
+            let mileString = NSString(format: "%0.1f", miles)
+            self.distanceLabel.text = "\(mileString) mi"
+            
+            self.calorieLabel.hidden = (calories == 0.0)
+            // Calories
+            let calorieString = NSString(format: "%1.0f", (calories / 1000))
+            self.calorieLabel.text = "\(calorieString) cal"
+        }
+      
         
     }
 

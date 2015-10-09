@@ -113,16 +113,16 @@ class InterfaceController: WKInterfaceController {
     
     private func updateProgress() {
         
-        print("update progress on watch, steps: \(currentUser.currentSteps)")
-        
-        let totalSteps = NSNumber(integer: currentUser.currentSteps).commaDelimitedString()
-        let totalDistance = NSString(format: "%0.1f", currentUser.currentDistance * 0.00062137)
-        let totalCalories = NSString(format: "%0.1f", currentUser.currentCalories / 1000)
-        
-        stepLabel.setText(totalSteps as String)
-        distanceLabel.setText(totalDistance as String)
-        calorieLabel.setText(totalCalories as String)
-        
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            let totalSteps = NSNumber(integer: self.currentUser.currentSteps).commaDelimitedString()
+            let totalDistance = NSString(format: "%0.1f", self.currentUser.currentDistance * 0.00062137)
+            let totalCalories = NSString(format: "%0.1f", self.currentUser.currentCalories / 1000)
+            
+            self.stepLabel.setText(totalSteps as String)
+            self.distanceLabel.setText(totalDistance as String)
+            self.calorieLabel.setText(totalCalories as String)
+        }
+    
     }
     
     private func startSession() {
