@@ -221,23 +221,32 @@ class ActivityViewController: UIViewController {
 }
 
 extension ActivityViewController : WCSessionDelegate {
+    
+    
+    
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-        
+    
         if let lastUpdate = message["lastUpdate"] as? NSDate {
-            if lastUpdate.compare(currentUser.lastUpdate!) == NSComparisonResult.OrderedDescending {
-                if let steps = message["steps"] as? Int {
-                    self.steps = steps
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if lastUpdate.compare(self.currentUser.lastUpdate!) == NSComparisonResult.OrderedDescending {
+                    if let steps = message["steps"] as? Int {
+                        self.steps = steps
+                    }
+                    
+                    if let distance = message["distance"] as? Double {
+                        self.distance = distance
+                    }
+                    
+                    if let calories = message["calories"] as? Double {
+                        self.calories = calories
+                    }
                 }
-                
-                if let distance = message["distance"] as? Double {
-                    self.distance = distance
-                }
-                
-                if let calories = message["calories"] as? Double {
-                    self.calories = calories
-                }
-            }
+
+            })
         }
     
     }
+    
+    
 }
