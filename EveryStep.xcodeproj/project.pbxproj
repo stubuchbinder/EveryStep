@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20203A091BC565D7008BBDEB /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; settings = {ASSET_TAGS = (); }; };
-		20203A0B1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; settings = {ASSET_TAGS = (); }; };
-		20203A0C1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; settings = {ASSET_TAGS = (); }; };
-		202751691BC5726900893C47 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; settings = {ASSET_TAGS = (); }; };
-		2027516A1BC572C300893C47 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; settings = {ASSET_TAGS = (); }; };
+		20203A091BC565D7008BBDEB /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
+		20203A0B1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; };
+		20203A0C1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; };
+		202751691BC5726900893C47 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
+		2027516A1BC572C300893C47 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; };
 		2027516C1BC578BA00893C47 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2027516B1BC578BA00893C47 /* HealthKit.framework */; };
-		2042645D1BC5B00800FAE77F /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042645C1BC5B00800FAE77F /* ComplicationController.swift */; settings = {ASSET_TAGS = (); }; };
+		2042645D1BC5B00800FAE77F /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042645C1BC5B00800FAE77F /* ComplicationController.swift */; };
 		2062CACC1BB34E770031DF55 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; };
 		2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
 		2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; };
@@ -32,6 +32,7 @@
 		209031711BBC803800ED697F /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209031701BBC803800ED697F /* ExtensionDelegate.swift */; };
 		209031731BBC803800ED697F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209031721BBC803800ED697F /* Assets.xcassets */; };
 		209031771BBC803800ED697F /* watchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2090315D1BBC803800ED697F /* watchapp.app */; };
+		20B6640F1BC857BE00D22564 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B6640E1BC857BE00D22564 /* TextFieldCell.swift */; };
 		20CEE3721BB4645B007D069B /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
 		20CEE3741BB46F5D007D069B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CEE3731BB46F5D007D069B /* HealthKit.framework */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		209031701BBC803800ED697F /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		209031721BBC803800ED697F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		209031741BBC803800ED697F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20B6640E1BC857BE00D22564 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		20CEE3711BB4645B007D069B /* HKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKManager.swift; sourceTree = "<group>"; };
 		20CEE3731BB46F5D007D069B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		20CEE3751BB46F5D007D069B /* EveryStep.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EveryStep.entitlements; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				206EC9E01B8F5EE40073D766 /* Main.storyboard */,
 				206EC9EC1B8F60630073D766 /* ProgressView.swift */,
 				2062CACB1BB34E770031DF55 /* GoalButton.swift */,
+				20B6640E1BC857BE00D22564 /* TextFieldCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			files = (
 				2062CACC1BB34E770031DF55 /* GoalButton.swift in Sources */,
 				2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */,
+				20B6640F1BC857BE00D22564 /* TextFieldCell.swift in Sources */,
 				206EC9E71B8F5F0D0073D766 /* AppDelegate.swift in Sources */,
 				206EC9ED1B8F60630073D766 /* ProgressView.swift in Sources */,
 				206EC9F31B8F60F80073D766 /* UIColor+EveryStep.swift in Sources */,

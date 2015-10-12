@@ -107,17 +107,7 @@ class ESUser : NSObject {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
-    
-    required init(coder aDecoder: NSCoder) {
-        self.currentGoal = aDecoder.decodeObjectForKey("currentGoal") as! Int
-        self.currentSteps = aDecoder.decodeObjectForKey("currentSteps") as! Int
-        self.lastUpdate = aDecoder.decodeObjectForKey("lastUpdate") as? NSDate
-        self.currentDistance = aDecoder.decodeDoubleForKey("currentDistance")
-        self.currentCalories = aDecoder.decodeDoubleForKey("currentCalories")
-        self.idleTime = aDecoder.decodeIntForKey("idleTime")
-    
-    }
-    
+
     override init() {
         
         self.currentGoal = 10000
@@ -129,12 +119,5 @@ class ESUser : NSObject {
         super.init()
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeInteger(currentGoal, forKey: "currentGoal")
-        aCoder.encodeInteger(currentSteps, forKey: "currentSteps")
-        aCoder.encodeObject(currentDistance, forKey: "currentDistance")
-        aCoder.encodeDouble(currentCalories, forKey: "currentCalories")
-        aCoder.encodeInt(idleTime, forKey: "idleTime")
-        aCoder.encodeObject(lastUpdate, forKey: "lastUpdate")
-    }
+
 }

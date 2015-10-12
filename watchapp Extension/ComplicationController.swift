@@ -11,7 +11,6 @@ import ClockKit
 class ComplicationController: NSObject, CLKComplicationDataSource {
     
     let currentUser = ESUserController.defaultController.currentUser()
-    
 
     // MARK: - Timeline Configuration
     
@@ -34,7 +33,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Population
     
     func getCurrentTimelineEntryForComplication(complication: CLKComplication, withHandler handler: ((CLKComplicationTimelineEntry?) -> Void)) {
-        handler(timelineEntryForStepCount())
+        handler(timelineEntryForStepCount(complication))
     }
     
     func getTimelineEntriesForComplication(complication: CLKComplication, beforeDate date: NSDate, limit: Int, withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
@@ -56,24 +55,65 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     /** Run once per initialization */
     func getPlaceholderTemplateForComplication(complication: CLKComplication, withHandler handler: (CLKComplicationTemplate?) -> Void) {
         
-        let template = CLKComplicationTemplateModularLargeStandardBody()
-        template.headerTextProvider = CLKSimpleTextProvider(text: "steps: 0", shortText: "step")
-        template.body1TextProvider = CLKSimpleTextProvider(text: "calories: 0", shortText: "cal")
-        template.body2TextProvider = CLKSimpleTextProvider(text: "miles: 0", shortText: "mi")
+        let headerTextProvider = CLKSimpleTextProvider(text: "steps: 0", shortText: "0 s")
+        let body1TextProvider = CLKSimpleTextProvider(text: "calories: 0", shortText: "0 cal")
+        let body2TextProvider = CLKSimpleTextProvider(text: "distance: 0", shortText: "0 mi")
         
-        handler(template)
+        switch complication.family {
+        case .ModularLarge:
+            let template = CLKComplicationTemplateModularLargeStandardBody()
+            template.headerTextProvider = headerTextProvider
+            template.body1TextProvider = body1TextProvider
+            template.body2TextProvider = body2TextProvider
+            handler(template)
+            
+        case .ModularSmall:
+            let template = CLKComplicationTemplateModularSmallSimpleText()
+            template.textProvider = headerTextProvider
+            handler(template)
+            
+        case .CircularSmall:
+            let template = CLKComplicationTemplateCircularSmallSimpleText()
+            template.textProvider = headerTextProvider
+            handler(template)
+            
+            
+        default:
+            handler(nil)
+            
+        }
+
     }
     
     
-    func timelineEntryForStepCount() -> CLKComplicationTimelineEntry? {
-        let template = CLKComplicationTemplateModularLargeStandardBody()
-        
-        template.headerTextProvider = CLKSimpleTextProvider(text: "steps: 0", shortText: "step")
-        template.body1TextProvider = CLKSimpleTextProvider(text: "calories: 0", shortText: "cal")
-        template.body2TextProvider = CLKSimpleTextProvider(text: "miles: 0", shortText: "mi")
+    func timelineEntryForStepCount(complication : CLKComplication) -> CLKComplicationTimelineEntry? {
         
         let date = NSDate().dateByAddingTimeInterval(-60)
-        return CLKComplicationTimelineEntry(date: date, complicationTemplate: template)
+        let steps = "\(self.currentUser.currentSteps)"
+        
+        let headerTextProvider = CLKRelativeDateTextProvider(date: NSDate(), style: .Natural, units: [.Month, .Day, .Hour, .Minute])
+        
+        switch complication.family {
+            
+        case .ModularLarge:
+            let template = CLKComplicationTemplateModularLargeStandardBody()
+            template.headerTextProvider = headerTextProvider
+            template.body1TextProvider = CLKSimpleTextProvider(text: "steps: \(steps)")
+            return CLKComplicationTimelineEntry(date: date, complicationTemplate: template)
+        
+        case .ModularSmall:
+            let template = CLKComplicationTemplateModularSmallSimpleText()
+            template.textProvider = CLKSimpleTextProvider(text: steps)
+            return CLKComplicationTimelineEntry(date: date, complicationTemplate: template)
+            
+        case .CircularSmall:
+            let template = CLKComplicationTemplateCircularSmallSimpleText()
+            template.textProvider = CLKSimpleTextProvider(text: steps)
+            return CLKComplicationTimelineEntry(date: date, complicationTemplate: template)
+        default:
+            return nil
+        }
+
         
     }
 }
