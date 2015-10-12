@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreActionSheetPicker
 
 class SettingsViewController: UITableViewController {
     
@@ -74,28 +75,22 @@ class SettingsViewController: UITableViewController {
     }
     
     private func displayIdleTimerAlert() {
-        let title = "Idle Time"
-        let message = "Remind me to get up in:"
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
-        
-        let picker = UIPickerView(frame: alertController.view.bounds)
-        picker.center.x = alertController.view.center.x
-        picker.center.y = alertController.view.center.y
-        picker.dataSource = self
-        picker.delegate = self
-        
-        alertController.view.addSubview(picker)
-        
-        let saveAction = UIAlertAction(title: "Save", style: .Default) { (action) -> Void in
+
+        let picker = ActionSheetDatePicker(title: "Idle Time", datePickerMode: .CountDownTimer, selectedDate: NSDate(), doneBlock: { picker, value, index in
             
-        }
+            let idleTime = value as! Int
+            self.currentUser.idleTime = idleTime
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadSections(NSIndexSet(index: Section.IdleTimer.rawValue), withRowAnimation: .None)
+            })
+            
+            
+            }, cancelBlock: nil, origin: self.view)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
+        picker.countDownDuration = NSNumber(integer: currentUser.idleTime).doubleValue
+     
+        picker.showActionSheetPicker()
     }
 
     
@@ -109,7 +104,7 @@ class SettingsViewController: UITableViewController {
             cell.textField.text = goal.commaDelimitedString()
             
         } else if indexPath.section == Section.IdleTimer.rawValue {
-            let idleTime = NSNumber(int: currentUser.idleTime)
+            let idleTime = NSNumber(int: Int32(currentUser.idleTime))
             
             let hours = idleTime.timeFormattedStringWithTimeFormat(format: .Hours)
             let minutes = idleTime.timeFormattedStringWithTimeFormat(format: .Minutes)

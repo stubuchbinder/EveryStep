@@ -27,23 +27,23 @@ class ESUserController {
         Save the user to disk with closure
     **/
     func saveUser(completion completion:((success : Bool) -> Void)?) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-            let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-            let docsDir = dirPaths[0]
-            let filePath = NSURL(string: docsDir)!.URLByAppendingPathComponent(self.URL_PATH)
-            
-            var success = false
-            if let userToSave = self.user {
-                success = NSKeyedArchiver.archiveRootObject(userToSave, toFile: filePath.description)
-            }
-            
-            if completion != nil {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion!(success: success)
-                })
-            }
-            
-        }
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
+//            let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+//            let docsDir = dirPaths[0]
+//            let filePath = NSURL(string: docsDir)!.URLByAppendingPathComponent(self.URL_PATH)
+//            
+//            var success = false
+//            if let userToSave = self.user {
+//                success = NSKeyedArchiver.archiveRootObject(userToSave, toFile: filePath.description)
+//            }
+//            
+//            if completion != nil {
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    completion!(success: success)
+//                })
+//            }
+//            
+//        }
     }
     
     /**
@@ -96,7 +96,7 @@ class ESUser : NSObject {
         }
     }
     
-    var idleTime : Int32 = 60 * 60 {
+    var idleTime : Int = 60 * 60 {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201D8AB31BCC034200FA276F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201D8AB21BCC034200FA276F /* CoreActionSheetPicker.framework */; settings = {ASSET_TAGS = (); }; };
 		20203A091BC565D7008BBDEB /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
 		20203A0B1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; };
 		20203A0C1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		201D8AB21BCC034200FA276F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		20203A0A1BC5679E008BBDEB /* CMManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMManager.swift; sourceTree = "<group>"; };
 		2027516B1BC578BA00893C47 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		2027516D1BC578BA00893C47 /* watchapp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchapp Extension.entitlements"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20CEE3741BB46F5D007D069B /* HealthKit.framework in Frameworks */,
+				201D8AB31BCC034200FA276F /* CoreActionSheetPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +138,7 @@
 		206EC9BF1B8F5E9B0073D766 = {
 			isa = PBXGroup;
 			children = (
+				201D8AB21BCC034200FA276F /* CoreActionSheetPicker.framework */,
 				2027516B1BC578BA00893C47 /* HealthKit.framework */,
 				20CEE3731BB46F5D007D069B /* HealthKit.framework */,
 				206EC9CA1B8F5E9B0073D766 /* EveryStep */,
@@ -251,6 +255,7 @@
 				206EC9C51B8F5E9B0073D766 /* Frameworks */,
 				206EC9C61B8F5E9B0073D766 /* Resources */,
 				2090317F1BBC803800ED697F /* Embed Watch Content */,
+				201D8AB41BCC034B00FA276F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -382,6 +387,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		201D8AB41BCC034B00FA276F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CoreActionSheetPicker.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		206EC9C41B8F5E9B0073D766 /* Sources */ = {
@@ -531,6 +553,10 @@
 				CODE_SIGN_ENTITLEMENTS = EveryStep/EveryStep.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = EveryStep/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep;
@@ -546,6 +572,10 @@
 				CODE_SIGN_ENTITLEMENTS = EveryStep/EveryStep.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = EveryStep/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep;
@@ -561,6 +591,10 @@
 				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "watchapp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep.watchkitapp.watchkitextension;
@@ -580,6 +614,10 @@
 				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "watchapp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep.watchkitapp.watchkitextension;
