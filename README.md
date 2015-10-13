@@ -2,7 +2,15 @@
 
 ## Installation
 
-EveryStep links external frameworks using Carthage. 
-The easiest way to install carthage is to download the package installer
+EveryStep links external frameworks with Carthage [https://github.com/Carthage/Carthage]  
 
-(https://github.com/Carthage/Carthage/releases/download/0.9.3/Carthage.pkg)
+1) Install carthage using the packaged installer: https://github.com/Carthage/Carthage/releases/download/0.9.3/Carthage.pkg
+
+2) Download framework dependencies:
+
+```
+carthage update
+```
+
+
+
