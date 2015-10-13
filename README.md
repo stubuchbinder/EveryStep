@@ -1,15 +1,8 @@
 # EveryStep
 
-## Install Homebrew
+## Installation
 
-Paste this in terminal:
+EveryStep links external frameworks using Carthage. 
+The easiest way to install carthage is to download the package installer
 
-
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-## Install Carthage
-
-Use [Homebrew](http://brew.sh) and install the `carthage` tool on your system simply by running `brew update` and `brew install carthage`.
-
-## Fetch Frameworks
-Run `carthage update`. This will fetch dependencies into a [Carthage/Checkouts][] folder, then build each one.
+(https://github.com/Carthage/Carthage/releases/download/0.9.3/Carthage.pkg)
