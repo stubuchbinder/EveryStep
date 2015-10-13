@@ -1,7 +1,8 @@
 # EveryStep
 
-Example application using CoreMotion to obtain step and distance count.
+## Install Carthage
 
-HealthKit is used to obtain calorie count
+Use [Homebrew](http://brew.sh) and install the `carthage` tool on your system simply by running `brew update` and `brew install carthage`.
 
-AppleWatch syncs with App using WatchConnectivity framework
+## Fetch Frameworks
+Run `carthage update`. This will fetch dependencies into a [Carthage/Checkouts][] folder, then build each one.
