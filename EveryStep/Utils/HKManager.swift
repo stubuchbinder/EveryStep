@@ -37,8 +37,10 @@ class HKManager : NSObject {
         }
         
         let calorieType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
+        let stepCountType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
+        let distanceType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!
         
-        healthStore.requestAuthorizationToShareTypes(nil, readTypes: NSSet(objects: calorieType) as? Set<HKObjectType> ) { (success completed: Bool, error err: NSError?) -> Void in
+        healthStore.requestAuthorizationToShareTypes(NSSet(objects: calorieType, stepCountType, distanceType) as? Set<HKSampleType>, readTypes: NSSet(objects: calorieType, stepCountType, distanceType) as? Set<HKObjectType> ) { (success completed: Bool, error err: NSError?) -> Void in
             if err != nil {
                 completion(success: false, error: err!)
             } else {
@@ -59,6 +61,23 @@ class HKManager : NSObject {
     }
     
     
+    func stepCount(completion:(success : Bool, result : AnyObject?) -> Void ) {
+        let stepCountType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
+        
+        let predicate = predicateSamplesForToday()
+      
+        let query = HKStatisticsQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
+  
+            if let quantity = result?.sumQuantity() {
+                let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
+                completion(success: true, result: steps)
+            } else {
+                completion(success: false, result: NSError(domain: "com.nakkotech.everystep", code: 2, userInfo: [NSLocalizedDescriptionKey: "0 calories returned"]))
+            }
+        }
+        
+        healthStore.executeQuery(query)
+    }
     func activeEnergyBurned(completion: (success : Bool, result : AnyObject?) -> Void) {
         let activeEnergyBurnType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
         
@@ -73,6 +92,24 @@ class HKManager : NSObject {
                 completion(success: false, result: NSError(domain: "com.nakkotech.everystep", code: 2, userInfo: [NSLocalizedDescriptionKey: "0 calories returned"]))
             }
             
+        }
+        
+        healthStore.executeQuery(query)
+    }
+    
+    func distance(completion:(success : Bool, result : AnyObject?) -> Void ) {
+        let distanceType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!
+        
+        let predicate = predicateSamplesForToday()
+        
+        let query = HKStatisticsQuery(quantityType: distanceType, quantitySamplePredicate: predicate, options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
+            
+            if let quantity = result?.sumQuantity() {
+                let distance = quantity.doubleValueForUnit(HKUnit.mileUnit())
+                completion(success: true, result: distance)
+            } else {
+                completion(success: false, result: NSError(domain: "com.nakkotech.everystep", code: 2, userInfo: [NSLocalizedDescriptionKey: "0 calories returned"]))
+            }
         }
         
         healthStore.executeQuery(query)

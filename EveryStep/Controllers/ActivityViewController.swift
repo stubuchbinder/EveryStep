@@ -20,7 +20,6 @@ class ActivityViewController: UIViewController {
    
     let currentUser = ESUserController.defaultController.currentUser()
     
-    let pedometerManager = CMManager.defaultManager
     let healthKitManager = HKManager.defaultManager
     
     var session : WCSession?
@@ -28,21 +27,18 @@ class ActivityViewController: UIViewController {
     var steps = 0 {
         didSet {
             currentUser.currentSteps = steps
-            updateProgress()
         }
     }
     
     var distance : Double = 0.0 {
         didSet {
             currentUser.currentDistance = distance
-            updateProgress()
         }
     }
     
     var calories : Double = 0.0 {
         didSet {
             currentUser.currentCalories = calories
-            updateProgress()
         }
     }
     
@@ -105,68 +101,91 @@ class ActivityViewController: UIViewController {
     
     func loadData() {
         
-        // Load step count and distance if it's available
-        if pedometerManager.isStepCountingAvailable() {
+        if healthKitManager.isAuthorized {
             
-            pedometerManager.dailyPedometerData({ (success, result) -> Void in
+            // Steps
+            healthKitManager.stepCount { (success, result) -> Void in
                 if success {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.steps = result as! Int
+                    })
                     
-                    if let data = result as? CMPedometerData {
+                }
+                
+                // Distance
+                self.healthKitManager.distance { (success, result) -> Void in
+                    if success {
                         
-                        self.steps = data.numberOfSteps.integerValue
-                        self.distance = data.distance! as Double
+                        let miles = result as! Double
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.updateProgress()
-                            self.broadcast()
-                            (UIApplication.sharedApplication().delegate as! AppDelegate).sheduleIdleTimerNotification()
-
+                            self.distance = miles
                         })
-                        
                     }
-                } else {
-                    // Alert Error
+                    
+                    // Calories
+                    self.healthKitManager.activeEnergyBurned { (success, result) -> Void in
+                        if success == true {
+                            let caloriesBurned = result as? Double
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.calories = caloriesBurned!
+                            })
+                        }
+                        
+                        self.updateProgress()
+                        self.broadcast()
+                    }
                 }
-            })
-        } else {
-            // Alert that step counting is not available on this device
-            
-        }
-        
-        // Load calorie burn
-        
-        if healthKitManager.isAuthorized {
-            loadCalories()
+            }
         } else {
             healthKitManager.authorizeHealthKit({ (success, error) -> Void in
                 if success {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.loadCalories()
+                        self.loadData()
                     })
                 }
             })
         }
+
     
     }
 
 
+    func loadStepCount() {
+        healthKitManager.stepCount { (success, result) -> Void in
+            if success {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.steps = result as! Int
+                })
+                
+            }
+        }
+    }
+    
+    func loadDistance() {
+        healthKitManager.distance { (success, result) -> Void in
+            if success {
+                
+                let miles = result as! Double
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.distance = miles
+                })
+            }
+        }
+    }
     /**
         Runs a health kit statistics query for active energy burned
     */
     func loadCalories() {
-        
         healthKitManager.activeEnergyBurned { (success, result) -> Void in
             if success == true {
                 let caloriesBurned = result as? Double
-                self.calories = caloriesBurned!
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.calories = caloriesBurned!
+                })
             }
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.updateProgress()
-                self.broadcast()
-            })
         }
-        
     }
     
     /**
