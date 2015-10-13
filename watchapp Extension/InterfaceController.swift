@@ -15,10 +15,7 @@ import CoreMotion
 class InterfaceController: WKInterfaceController {
 
     let currentUser = ESUserController.defaultController.currentUser()
-    
-    let pedometerManager = CMManager.defaultManager
-    let healthManager = HKManager.defaultManager
-    
+    let healthKitManager = HKManager.defaultManager
     
     @IBOutlet var stepLabel: WKInterfaceLabel!
     @IBOutlet var distanceLabel : WKInterfaceLabel!
@@ -27,7 +24,6 @@ class InterfaceController: WKInterfaceController {
     var steps : Int = 0 {
         didSet {
             currentUser.currentSteps = steps
-            updateProgress()
         }
     }
     
@@ -35,14 +31,12 @@ class InterfaceController: WKInterfaceController {
     var distance : Double = 0.0 {
         didSet {
             currentUser.currentDistance = distance
-            updateProgress()
         }
     }
     
     var calories : Double = 0.0 {
         didSet {
             currentUser.currentCalories = calories
-            updateProgress()
         }
     }
     
@@ -59,56 +53,56 @@ class InterfaceController: WKInterfaceController {
         loadData()
     }
 
-    
-    private func loadData() {
-        loadStepData()
+
+    func loadData() {
         
-        if healthManager.isAuthorized {
-            loadCalorieData()
-        } else {
-            healthManager.authorizeHealthKit({ (success, error) -> Void in
+        if healthKitManager.isAuthorized {
+            
+            // Steps
+            healthKitManager.stepCount { (success, result) -> Void in
                 if success {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.loadCalorieData()
+                        self.steps = result as! Int
                     })
                     
                 }
-            })
-        }
-     
-    }
-    
-    private func loadStepData() {
-        
-        pedometerManager.dailyPedometerData { (success, result) -> Void in
-            if success {
-                if let data = result as? CMPedometerData {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.steps = data.numberOfSteps.integerValue
-                        if let distance = data.distance?.doubleValue {
-                            self.distance = distance
+                
+                // Distance
+                self.healthKitManager.distance { (success, result) -> Void in
+                    if success {
+                        
+                        let miles = result as! Double
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.distance = miles
+                        })
+                    }
+                    
+                    // Calories
+                    self.healthKitManager.activeEnergyBurned { (success, result) -> Void in
+                        if success == true {
+                            let caloriesBurned = result as? Double
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.calories = caloriesBurned!
+                            })
                         }
-                        self.broadcast()
-                      
-                    })
-                }
-            }
-        }
-        
-    }
-    
-    private func loadCalorieData() {
-        healthManager.activeEnergyBurned { (success, result) -> Void in
-            if success {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    if let calories = result as? Double {
-                        self.calories = calories
+                        
+                        self.updateProgress()
                         self.broadcast()
                     }
-                })
+                }
             }
+        } else {
+            healthKitManager.authorizeHealthKit({ (success, error) -> Void in
+                if success {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.loadData()
+                    })
+                }
+            })
         }
     }
+
     
     
     private func updateProgress() {
@@ -147,7 +141,7 @@ extension InterfaceController : WCSessionDelegate {
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         
         if let lastUpdate = message["lastUpdate"] as? NSDate {
-            
+    
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if lastUpdate.compare(self.currentUser.lastUpdate) == NSComparisonResult.OrderedDescending {
                     if let steps = message["steps"] as? Int {
@@ -162,6 +156,7 @@ extension InterfaceController : WCSessionDelegate {
                         self.calories = calories
                     }
                 }
+                self.updateProgress()
                 
             })
         }

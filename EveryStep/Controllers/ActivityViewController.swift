@@ -146,47 +146,10 @@ class ActivityViewController: UIViewController {
                 }
             })
         }
-
-    
     }
 
 
-    func loadStepCount() {
-        healthKitManager.stepCount { (success, result) -> Void in
-            if success {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.steps = result as! Int
-                })
-                
-            }
-        }
-    }
-    
-    func loadDistance() {
-        healthKitManager.distance { (success, result) -> Void in
-            if success {
-                
-                let miles = result as! Double
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.distance = miles
-                })
-            }
-        }
-    }
-    /**
-        Runs a health kit statistics query for active energy burned
-    */
-    func loadCalories() {
-        healthKitManager.activeEnergyBurned { (success, result) -> Void in
-            if success == true {
-                let caloriesBurned = result as? Double
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.calories = caloriesBurned!
-                })
-            }
-        }
-    }
+
     
     /**
         Refreshes the UI based on the data in 'currentUser'
@@ -284,6 +247,8 @@ extension ActivityViewController : WCSessionDelegate {
                         self.calories = calories
                     }
                 }
+                
+                self.updateProgress()
 
             })
         }
