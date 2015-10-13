@@ -149,7 +149,7 @@ extension InterfaceController : WCSessionDelegate {
         if let lastUpdate = message["lastUpdate"] as? NSDate {
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if lastUpdate.compare(self.currentUser.lastUpdate!) == NSComparisonResult.OrderedDescending {
+                if lastUpdate.compare(self.currentUser.lastUpdate) == NSComparisonResult.OrderedDescending {
                     if let steps = message["steps"] as? Int {
                         self.steps = steps
                     }

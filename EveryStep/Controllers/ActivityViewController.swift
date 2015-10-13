@@ -52,14 +52,24 @@ class ActivityViewController: UIViewController {
         
         startSession()
         
-        
+        // reload any data when the app returns from the background
         NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note : NSNotification) -> Void in
             self.loadData()
         }
-        
-        
     }
     
+    
+    /**
+        Refresh UI for any changes that may have happened on the settings screen
+    */
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        updateProgress()
+    }
+    
+    /**
+        Start watch connectivity session so that we can hand off / receive any updates to & from the watch app
+    */
     private func startSession() {
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
@@ -68,7 +78,9 @@ class ActivityViewController: UIViewController {
         }
     }
     
-    
+    /**
+        Send a message payload to the watch app so that data can remain in sync
+    */
     private func broadcast() {
         if let session = session where session.reachable {
             session.sendMessage(["steps": steps, "calories": calories, "distance": distance, "lastUpdate" : NSDate()], replyHandler: nil, errorHandler: { (error) -> Void in
@@ -78,8 +90,10 @@ class ActivityViewController: UIViewController {
         
     }
     
-    
-    func midnightOfToday() -> NSDate {
+    /**
+        Helper method to return the start of the current day (12am)
+    */
+    private func midnightOfToday() -> NSDate {
         
         let calendar = NSCalendar.currentCalendar()
         let now = NSDate()
@@ -136,6 +150,9 @@ class ActivityViewController: UIViewController {
     }
 
 
+    /**
+        Runs a health kit statistics query for active energy burned
+    */
     func loadCalories() {
         
         healthKitManager.activeEnergyBurned { (success, result) -> Void in
@@ -152,7 +169,9 @@ class ActivityViewController: UIViewController {
         
     }
     
-    
+    /**
+        Refreshes the UI based on the data in 'currentUser'
+    */
     func updateProgress() {
         // make sure UI updates happen on the main thread
         
@@ -187,8 +206,10 @@ class ActivityViewController: UIViewController {
     }
 
     /**
-        User pressed the goal button
-    **/
+        User pressed the goal button.
+    
+        Display a text field alert so that the user can update their goal
+    */
     @IBAction func pressedGoalButton(sender: AnyObject) {
         
         let alertController = UIAlertController(title: "New Goal", message: "Set a new daily step goal", preferredStyle: .Alert)
@@ -226,14 +247,12 @@ class ActivityViewController: UIViewController {
 
 extension ActivityViewController : WCSessionDelegate {
     
-    
-    
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
     
         if let lastUpdate = message["lastUpdate"] as? NSDate {
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if lastUpdate.compare(self.currentUser.lastUpdate!) == NSComparisonResult.OrderedDescending {
+                if lastUpdate.compare(self.currentUser.lastUpdate) == NSComparisonResult.OrderedDescending {
                     if let steps = message["steps"] as? Int {
                         self.steps = steps
                     }

@@ -27,23 +27,23 @@ class ESUserController {
         Save the user to disk with closure
     **/
     func saveUser(completion completion:((success : Bool) -> Void)?) {
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-//            let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-//            let docsDir = dirPaths[0]
-//            let filePath = NSURL(string: docsDir)!.URLByAppendingPathComponent(self.URL_PATH)
-//            
-//            var success = false
-//            if let userToSave = self.user {
-//                success = NSKeyedArchiver.archiveRootObject(userToSave, toFile: filePath.description)
-//            }
-//            
-//            if completion != nil {
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    completion!(success: success)
-//                })
-//            }
-//            
-//        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
+            let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            let docsDir = dirPaths[0]
+            let filePath = NSURL(string: docsDir)!.URLByAppendingPathComponent(self.URL_PATH)
+            
+            var success = false
+            if let userToSave = self.user {
+                success = NSKeyedArchiver.archiveRootObject(userToSave, toFile: filePath.description)
+            }
+            
+            if completion != nil {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion!(success: success)
+                })
+            }
+            
+        }
     }
     
     /**
@@ -70,54 +70,79 @@ class ESUserController {
 }
 
 
-class ESUser : NSObject {
+class ESUser : NSObject, NSCoding {
     
-    var currentGoal : Int!{
+    var currentGoal : Int = 10000{
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
-    var currentSteps : Int! {
+    var currentSteps : Int = 0{
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
-    var currentDistance : Double! {
+    var currentDistance : Double = 0.0 {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
-    var currentCalories : Double! {
+    var currentCalories : Double = 0.0 {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
-    var idleTime : Int = 60 * 60 {
+    var idleTime : Int = (60 * 60) {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
-    var lastUpdate : NSDate? {
+    var lastUpdate : NSDate = NSDate() {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
-
+    
+    
     override init() {
-        
-        self.currentGoal = 10000
-        self.currentDistance = 0.0
-        self.currentSteps = 0
-        self.currentCalories = 0.0
-        self.idleTime = 60 * 60
-        self.lastUpdate = NSDate()
         super.init()
     }
+
+
+     required init(coder aDecoder: NSCoder) {
+
+        let steps = aDecoder.decodeIntForKey("steps")
+        let goal = aDecoder.decodeIntForKey("goal")
+        let distance = aDecoder.decodeDoubleForKey("distance")
+        let calories = aDecoder.decodeDoubleForKey("calories")
+        let idleTime = aDecoder.decodeIntForKey("idleTime")
+        let lastUpdate = aDecoder.decodeObjectForKey("lastUpdate") as! NSDate
+        
+        self.currentSteps = Int(steps)
+        self.currentGoal = Int(goal)
+        self.currentDistance = distance
+        self.currentCalories = calories
+        self.idleTime = Int(idleTime)
+        self.lastUpdate = lastUpdate
+    
+    
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeInteger(self.currentSteps, forKey: "steps")
+        aCoder.encodeInteger(self.currentGoal, forKey: "goal")
+        aCoder.encodeDouble(self.currentDistance, forKey: "distance")
+        aCoder.encodeDouble(self.currentCalories, forKey: "calories")
+        aCoder.encodeInteger(self.idleTime, forKey: "idleTime")
+        aCoder.encodeObject(self.lastUpdate, forKey: "lastUpdate")
+    }
+    
+
     
 
 }
