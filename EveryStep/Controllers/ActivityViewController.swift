@@ -135,6 +135,7 @@ class ActivityViewController: UIViewController {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.updateProgress()
                             self.broadcast()
+                            (UIApplication.sharedApplication().delegate as! AppDelegate).sheduleIdleTimerNotification()
                         })
                         
                     }
