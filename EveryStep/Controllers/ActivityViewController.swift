@@ -52,6 +52,8 @@ class ActivityViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note : NSNotification) -> Void in
             self.loadData()
         }
+        
+        loadData()
     }
     
     
@@ -106,34 +108,35 @@ class ActivityViewController: UIViewController {
             // Steps
             healthKitManager.stepCount { (success, result) -> Void in
                 if success {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.steps = result as! Int
-                    })
-                    
+                    self.steps = result as! Int
+                } else {
+                    self.steps = 0
+                    print("Error getting step count: \((result as! NSError).localizedDescription)")
                 }
                 
                 // Distance
                 self.healthKitManager.distance { (success, result) -> Void in
                     if success {
-                        
-                        let miles = result as! Double
-                        
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.distance = miles
-                        })
+                        self.distance = result as! Double
+                    } else {
+                        self.distance = 0.0
+                        print("Error getting distance: \((result as! NSError).localizedDescription)")
                     }
                     
                     // Calories
                     self.healthKitManager.activeEnergyBurned { (success, result) -> Void in
                         if success == true {
-                            let caloriesBurned = result as? Double
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.calories = caloriesBurned!
-                            })
+                            self.calories = result as! Double
+                        } else {
+                            self.calories = 0.0
+                            print("Error getting distance: \((result as! NSError).localizedDescription)")
                         }
                         
-                        self.updateProgress()
-                        self.broadcast()
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.updateProgress()
+                            self.broadcast()
+                        })
+                        
                     }
                 }
             }
@@ -155,9 +158,7 @@ class ActivityViewController: UIViewController {
         Refreshes the UI based on the data in 'currentUser'
     */
     func updateProgress() {
-        // make sure UI updates happen on the main thread
-        
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+
             let steps = NSNumber(integer: self.currentUser.currentSteps)
             let distance = self.currentUser.currentDistance
             let goal = NSNumber(integer: self.currentUser.currentGoal)
@@ -177,12 +178,11 @@ class ActivityViewController: UIViewController {
             let miles = distance * 0.00062137
             let mileString = NSString(format: "%0.1f", miles)
             self.distanceLabel.text = "\(mileString) mi"
-            
-            self.calorieLabel.hidden = (calories == 0.0)
+        
             // Calories
             let calorieString = NSString(format: "%1.0f", (calories / 1000))
             self.calorieLabel.text = "\(calorieString) cal"
-        }
+      
       
         
     }

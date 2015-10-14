@@ -48,6 +48,20 @@
                ReferencedContainer = "container:EveryStep.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "20586B661BCD768D008E190A"
+               BuildableName = "today.appex"
+               BlueprintName = "today"
+               ReferencedContainer = "container:EveryStep.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

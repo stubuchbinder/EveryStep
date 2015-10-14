@@ -66,14 +66,19 @@ class HKManager : NSObject {
         
         let query = HKStatisticsQuery(quantityType: stepCountType, quantitySamplePredicate: predicateSamplesForToday(), options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
   
-
+            if let _ = error {
+                completion(success: false, result: error)
+                return
+            }
+            
             if let quantity = result?.sumQuantity() {
-
                 let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
                 completion(success: true, result: steps)
             } else {
-                completion(success: false, result: NSError(domain: "com.nakkotech.everystep", code: 2, userInfo: [NSLocalizedDescriptionKey: "0 calories returned"]))
+                completion(success: true, result: 0)
             }
+           
+          
         }
         
         healthStore.executeQuery(query)
@@ -82,13 +87,18 @@ class HKManager : NSObject {
         let activeEnergyBurnType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
     
         let query = HKStatisticsQuery(quantityType: activeEnergyBurnType, quantitySamplePredicate: predicateSamplesForToday(), options: HKStatisticsOptions.CumulativeSum) { (query : HKStatisticsQuery, result : HKStatistics?, error : NSError?) -> Void in
+            if let _ = error {
+                completion(success: false, result: error)
+                return
+            }
             
             if let quantity = result?.sumQuantity() {
                 let value = quantity.doubleValueForUnit(HKUnit.calorieUnit())
                 completion(success: true, result: value)
             } else {
-                completion(success: false, result: NSError(domain: "com.nakkotech.everystep", code: 2, userInfo: [NSLocalizedDescriptionKey: "0 calories returned"]))
+                completion(success: true, result: 0)
             }
+           
             
         }
         
@@ -100,11 +110,16 @@ class HKManager : NSObject {
  
         let query = HKStatisticsQuery(quantityType: distanceType, quantitySamplePredicate: predicateSamplesForToday(), options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
             
+            if let _ = error {
+                completion(success: false, result: error)
+                return
+            }
+            
             if let quantity = result?.sumQuantity() {
                 let distance = quantity.doubleValueForUnit(HKUnit.mileUnit())
                 completion(success: true, result: distance)
             } else {
-                completion(success: false, result: NSError(domain: "com.nakkotech.everystep", code: 2, userInfo: [NSLocalizedDescriptionKey: "0 calories returned"]))
+                completion(success: true, result: 0)
             }
         }
         

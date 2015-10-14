@@ -61,34 +61,35 @@ class InterfaceController: WKInterfaceController {
             // Steps
             healthKitManager.stepCount { (success, result) -> Void in
                 if success {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.steps = result as! Int
-                    })
-                    
+                    self.steps = result as! Int
+                } else {
+                    self.steps = 0
+                    print("Error getting step count: \((result as! NSError).localizedDescription)")
                 }
                 
                 // Distance
                 self.healthKitManager.distance { (success, result) -> Void in
                     if success {
-                        
-                        let miles = result as! Double
-                        
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.distance = miles
-                        })
+                        self.distance = result as! Double
+                    } else {
+                        self.distance = 0.0
+                        print("Error getting distance: \((result as! NSError).localizedDescription)")
                     }
                     
                     // Calories
                     self.healthKitManager.activeEnergyBurned { (success, result) -> Void in
                         if success == true {
-                            let caloriesBurned = result as? Double
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.calories = caloriesBurned!
-                            })
+                            self.calories = result as! Double
+                        } else {
+                            self.calories = 0.0
+                            print("Error getting distance: \((result as! NSError).localizedDescription)")
                         }
                         
-                        self.updateProgress()
-                        self.broadcast()
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.updateProgress()
+                            self.broadcast()
+                        })
+                        
                     }
                 }
             }
@@ -102,7 +103,6 @@ class InterfaceController: WKInterfaceController {
             })
         }
     }
-
     
     
     private func updateProgress() {
