@@ -38,38 +38,33 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.preferredContentSize = CGSizeMake(self.view.frame.size.width, 80);
-        
-        // reload any data when the app returns from the background
-    
+        updateContentSize()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        loadData()
-    }
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
+        loadData()
 
         completionHandler(NCUpdateResult.NewData)
     }
     
     
-    func loadData() {
+    
+    private func updateContentSize() {
+        let contentWidth = self.view.bounds.width
+        let contentHeight : CGFloat = (calories == 0.0) ? 60.0 : 80.0
+        self.preferredContentSize = CGSize(width: contentWidth, height: contentHeight)
+    }
+    
+    
+    private func loadData() {
         
         if healthKitManager.isAuthorized {
             
@@ -127,20 +122,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             let goal = NSNumber(integer: self.currentUser.currentGoal)
             let calories = self.currentUser.currentCalories
         
-            // step count
-            self.stepCountLabel.text = "\(steps.commaDelimitedString()) / \(goal.commaDelimitedString()) steps"
-        
-            
-            // Distance
+            self.stepCountLabel.text = "\(steps.commaDelimitedString()) / \(goal.commaDelimitedString())"
+   
             let miles = distance * 0.00062137
             let mileString = NSString(format: "%0.1f", miles)
-            self.distanceLabel.text = "\(mileString) miles"
-            
-            self.calorieLabel.hidden = (calories == 0.0)
-            // Calories
+            self.distanceLabel.text = "\(mileString)"
+
             let calorieString = NSString(format: "%1.0f", (calories / 1000))
-            self.calorieLabel.text = "\(calorieString) calories"
-        
+            self.calorieLabel.text = "\(calorieString) cal"
+            self.calorieLabel.hidden = (calories == 0.0)
     }
     
     
