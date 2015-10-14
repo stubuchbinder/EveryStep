@@ -72,13 +72,13 @@ class ESUserController {
 
 class ESUser : NSObject, NSCoding {
     
-    var currentGoal : Int = 10000{
+    var currentGoal : Int = 10000 {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
-    var currentSteps : Int = 0{
+    var currentSteps : Int = 0 {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }

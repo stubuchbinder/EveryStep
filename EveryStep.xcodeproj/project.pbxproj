@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		201D8AB31BCC034200FA276F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201D8AB21BCC034200FA276F /* CoreActionSheetPicker.framework */; settings = {ASSET_TAGS = (); }; };
 		20203A091BC565D7008BBDEB /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
-		20203A0B1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; };
-		20203A0C1BC5679E008BBDEB /* CMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20203A0A1BC5679E008BBDEB /* CMManager.swift */; };
 		202751691BC5726900893C47 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
 		2027516A1BC572C300893C47 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; };
 		2027516C1BC578BA00893C47 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2027516B1BC578BA00893C47 /* HealthKit.framework */; };
 		2042645D1BC5B00800FAE77F /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042645C1BC5B00800FAE77F /* ComplicationController.swift */; };
+		20586B6A1BCD768D008E190A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20586B691BCD768D008E190A /* NotificationCenter.framework */; settings = {ASSET_TAGS = (); }; };
+		20586B6D1BCD768D008E190A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20586B6C1BCD768D008E190A /* TodayViewController.swift */; };
+		20586B701BCD768D008E190A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20586B6E1BCD768D008E190A /* MainInterface.storyboard */; };
+		20586B741BCD768D008E190A /* today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 20586B671BCD768D008E190A /* today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		20586B791BCD773C008E190A /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; settings = {ASSET_TAGS = (); }; };
+		20586B7A1BCD7769008E190A /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; settings = {ASSET_TAGS = (); }; };
+		20586B7B1BCD77EE008E190A /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9EC1B8F60630073D766 /* ProgressView.swift */; settings = {ASSET_TAGS = (); }; };
+		20586B7C1BCD77FB008E190A /* UIColor+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9F21B8F60F80073D766 /* UIColor+EveryStep.swift */; settings = {ASSET_TAGS = (); }; };
 		2062CACC1BB34E770031DF55 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; };
 		2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
 		2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; };
@@ -36,9 +42,18 @@
 		20B6640F1BC857BE00D22564 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B6640E1BC857BE00D22564 /* TextFieldCell.swift */; };
 		20CEE3721BB4645B007D069B /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
 		20CEE3741BB46F5D007D069B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CEE3731BB46F5D007D069B /* HealthKit.framework */; };
+		20E7769F1BCD7DD100E69860 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; settings = {ASSET_TAGS = (); }; };
+		20E776A01BCD7E1000E69860 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		20586B721BCD768D008E190A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 206EC9C01B8F5E9B0073D766 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20586B661BCD768D008E190A;
+			remoteInfo = today;
+		};
 		2090316B1BBC803800ED697F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 206EC9C01B8F5E9B0073D766 /* Project object */;
@@ -56,6 +71,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		20586B781BCD768D008E190A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				20586B741BCD768D008E190A /* today.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2090317B1BBC803800ED697F /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,10 +108,14 @@
 
 /* Begin PBXFileReference section */
 		201D8AB21BCC034200FA276F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
-		20203A0A1BC5679E008BBDEB /* CMManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMManager.swift; sourceTree = "<group>"; };
 		2027516B1BC578BA00893C47 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		2027516D1BC578BA00893C47 /* watchapp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchapp Extension.entitlements"; sourceTree = "<group>"; };
 		2042645C1BC5B00800FAE77F /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		20586B671BCD768D008E190A /* today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		20586B691BCD768D008E190A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		20586B6C1BCD768D008E190A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		20586B6F1BCD768D008E190A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		20586B711BCD768D008E190A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2062CACB1BB34E770031DF55 /* GoalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalButton.swift; sourceTree = "<group>"; };
 		2062CACD1BB350B70031DF55 /* ESUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESUserController.swift; sourceTree = "<group>"; };
 		2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+EveryStep.swift"; sourceTree = "<group>"; };
@@ -115,6 +145,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		20586B641BCD768D008E190A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20586B6A1BCD768D008E190A /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		206EC9C51B8F5E9B0073D766 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,6 +173,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20586B681BCD768D008E190A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20586B691BCD768D008E190A /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20586B6B1BCD768D008E190A /* today */ = {
+			isa = PBXGroup;
+			children = (
+				20586B6C1BCD768D008E190A /* TodayViewController.swift */,
+				20586B6E1BCD768D008E190A /* MainInterface.storyboard */,
+				20586B711BCD768D008E190A /* Info.plist */,
+			);
+			path = today;
+			sourceTree = "<group>";
+		};
 		206EC9BF1B8F5E9B0073D766 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +200,8 @@
 				206EC9CA1B8F5E9B0073D766 /* EveryStep */,
 				2090315E1BBC803800ED697F /* watchapp */,
 				2090316D1BBC803800ED697F /* watchapp Extension */,
+				20586B6B1BCD768D008E190A /* today */,
+				20586B681BCD768D008E190A /* Frameworks */,
 				206EC9C91B8F5E9B0073D766 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -154,6 +212,7 @@
 				206EC9C81B8F5E9B0073D766 /* EveryStep.app */,
 				2090315D1BBC803800ED697F /* watchapp.app */,
 				209031691BBC803800ED697F /* watchapp Extension.appex */,
+				20586B671BCD768D008E190A /* today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,7 +266,6 @@
 				206EC9EF1B8F60D90073D766 /* Extensions */,
 				2062CACD1BB350B70031DF55 /* ESUserController.swift */,
 				20CEE3711BB4645B007D069B /* HKManager.swift */,
-				20203A0A1BC5679E008BBDEB /* CMManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -247,6 +305,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		20586B661BCD768D008E190A /* today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20586B771BCD768D008E190A /* Build configuration list for PBXNativeTarget "today" */;
+			buildPhases = (
+				20586B631BCD768D008E190A /* Sources */,
+				20586B641BCD768D008E190A /* Frameworks */,
+				20586B651BCD768D008E190A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = today;
+			productName = today;
+			productReference = 20586B671BCD768D008E190A /* today.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		206EC9C71B8F5E9B0073D766 /* EveryStep */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 206EC9DA1B8F5E9B0073D766 /* Build configuration list for PBXNativeTarget "EveryStep" */;
@@ -256,11 +331,13 @@
 				206EC9C61B8F5E9B0073D766 /* Resources */,
 				2090317F1BBC803800ED697F /* Embed Watch Content */,
 				201D8AB41BCC034B00FA276F /* ShellScript */,
+				20586B781BCD768D008E190A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				209031761BBC803800ED697F /* PBXTargetDependency */,
+				20586B731BCD768D008E190A /* PBXTargetDependency */,
 			);
 			name = EveryStep;
 			productName = EveryStep;
@@ -311,6 +388,10 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = nakkotech;
 				TargetAttributes = {
+					20586B661BCD768D008E190A = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = BH392B46K8;
+					};
 					206EC9C71B8F5E9B0073D766 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = BH392B46K8;
@@ -354,11 +435,20 @@
 				206EC9C71B8F5E9B0073D766 /* EveryStep */,
 				2090315C1BBC803800ED697F /* watchapp */,
 				209031681BBC803800ED697F /* watchapp Extension */,
+				20586B661BCD768D008E190A /* today */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		20586B651BCD768D008E190A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20586B701BCD768D008E190A /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		206EC9C61B8F5E9B0073D766 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -406,6 +496,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		20586B631BCD768D008E190A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20E7769F1BCD7DD100E69860 /* GoalButton.swift in Sources */,
+				20586B7A1BCD7769008E190A /* ESUserController.swift in Sources */,
+				20586B7B1BCD77EE008E190A /* ProgressView.swift in Sources */,
+				20E776A01BCD7E1000E69860 /* NSNumber+EveryStep.swift in Sources */,
+				20586B7C1BCD77FB008E190A /* UIColor+EveryStep.swift in Sources */,
+				20586B791BCD773C008E190A /* HKManager.swift in Sources */,
+				20586B6D1BCD768D008E190A /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		206EC9C41B8F5E9B0073D766 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -418,7 +522,6 @@
 				206EC9F31B8F60F80073D766 /* UIColor+EveryStep.swift in Sources */,
 				20CEE3721BB4645B007D069B /* HKManager.swift in Sources */,
 				206EC9E91B8F5F3A0073D766 /* ActivityViewController.swift in Sources */,
-				20203A0B1BC5679E008BBDEB /* CMManager.swift in Sources */,
 				206EC9EB1B8F5F530073D766 /* SettingsViewController.swift in Sources */,
 				2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */,
 			);
@@ -429,7 +532,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2027516A1BC572C300893C47 /* NSNumber+EveryStep.swift in Sources */,
-				20203A0C1BC5679E008BBDEB /* CMManager.swift in Sources */,
 				20203A091BC565D7008BBDEB /* HKManager.swift in Sources */,
 				202751691BC5726900893C47 /* ESUserController.swift in Sources */,
 				209031711BBC803800ED697F /* ExtensionDelegate.swift in Sources */,
@@ -441,6 +543,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		20586B731BCD768D008E190A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20586B661BCD768D008E190A /* today */;
+			targetProxy = 20586B721BCD768D008E190A /* PBXContainerItemProxy */;
+		};
 		2090316C1BBC803800ED697F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 209031681BBC803800ED697F /* watchapp Extension */;
@@ -454,6 +561,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		20586B6E1BCD768D008E190A /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20586B6F1BCD768D008E190A /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		2090315F1BBC803800ED697F /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -465,6 +580,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		20586B751BCD768D008E190A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = today/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep.today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		20586B761BCD768D008E190A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = today/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nakkotech.EveryStep.today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		206EC9D81B8F5E9B0073D766 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -553,6 +694,7 @@
 				CODE_SIGN_ENTITLEMENTS = EveryStep/EveryStep.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -572,6 +714,7 @@
 				CODE_SIGN_ENTITLEMENTS = EveryStep/EveryStep.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -669,6 +812,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		20586B771BCD768D008E190A /* Build configuration list for PBXNativeTarget "today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20586B751BCD768D008E190A /* Debug */,
+				20586B761BCD768D008E190A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		206EC9C31B8F5E9B0073D766 /* Build configuration list for PBXProject "EveryStep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -64,11 +64,11 @@ class HKManager : NSObject {
     func stepCount(completion:(success : Bool, result : AnyObject?) -> Void ) {
         let stepCountType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
         
-        let predicate = predicateSamplesForToday()
-      
-        let query = HKStatisticsQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
+        let query = HKStatisticsQuery(quantityType: stepCountType, quantitySamplePredicate: predicateSamplesForToday(), options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
   
+
             if let quantity = result?.sumQuantity() {
+
                 let steps = quantity.doubleValueForUnit(HKUnit.countUnit())
                 completion(success: true, result: steps)
             } else {
@@ -80,10 +80,8 @@ class HKManager : NSObject {
     }
     func activeEnergyBurned(completion: (success : Bool, result : AnyObject?) -> Void) {
         let activeEnergyBurnType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
-        
-        let predicate = predicateSamplesForToday()
-        
-        let query = HKStatisticsQuery(quantityType: activeEnergyBurnType, quantitySamplePredicate: predicate, options: HKStatisticsOptions.CumulativeSum) { (query : HKStatisticsQuery, result : HKStatistics?, error : NSError?) -> Void in
+    
+        let query = HKStatisticsQuery(quantityType: activeEnergyBurnType, quantitySamplePredicate: predicateSamplesForToday(), options: HKStatisticsOptions.CumulativeSum) { (query : HKStatisticsQuery, result : HKStatistics?, error : NSError?) -> Void in
             
             if let quantity = result?.sumQuantity() {
                 let value = quantity.doubleValueForUnit(HKUnit.calorieUnit())
@@ -99,10 +97,8 @@ class HKManager : NSObject {
     
     func distance(completion:(success : Bool, result : AnyObject?) -> Void ) {
         let distanceType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!
-        
-        let predicate = predicateSamplesForToday()
-        
-        let query = HKStatisticsQuery(quantityType: distanceType, quantitySamplePredicate: predicate, options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
+ 
+        let query = HKStatisticsQuery(quantityType: distanceType, quantitySamplePredicate: predicateSamplesForToday(), options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
             
             if let quantity = result?.sumQuantity() {
                 let distance = quantity.doubleValueForUnit(HKUnit.mileUnit())

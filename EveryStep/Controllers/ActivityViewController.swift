@@ -78,11 +78,11 @@ class ActivityViewController: UIViewController {
         Send a message payload to the watch app so that data can remain in sync
     */
     private func broadcast() {
-        if let session = session where session.reachable {
-            session.sendMessage(["steps": steps, "calories": calories, "distance": distance, "lastUpdate" : NSDate()], replyHandler: nil, errorHandler: { (error) -> Void in
-                print(error)
-            })
-        }
+//        if let session = session where session.reachable {
+//            session.sendMessage(["steps": steps, "calories": calories, "distance": distance, "lastUpdate" : NSDate()], replyHandler: nil, errorHandler: { (error) -> Void in
+//                print(error)
+//            })
+//        }
         
     }
     

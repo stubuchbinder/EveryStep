@@ -23,7 +23,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="EveryStepLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Tos-rv-UF2">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="EveryStepLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Tos-rv-UF2">
                                 <rect key="frame" x="174" y="270" width="253" height="61"/>
                                 <animations/>
                             </imageView>

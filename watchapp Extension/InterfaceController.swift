@@ -128,11 +128,11 @@ class InterfaceController: WKInterfaceController {
     }
     
     func broadcast() {
-        if let session = session where session.reachable {
-            session.sendMessage(["steps": self.steps, "distance": self.distance, "calories": self.calories, "lastUpdate": NSDate()], replyHandler: nil, errorHandler: { (error) -> Void in
-                print("Error sending broadcast from watch app: \(error)")
-            })
-        }
+//        if let session = session where session.reachable {
+//            session.sendMessage(["steps": self.steps, "distance": self.distance, "calories": self.calories, "lastUpdate": NSDate()], replyHandler: nil, errorHandler: { (error) -> Void in
+//                print("Error sending broadcast from watch app: \(error)")
+//            })
+//        }
     }
 
 }
