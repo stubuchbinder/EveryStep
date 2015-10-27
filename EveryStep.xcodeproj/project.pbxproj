@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		201D8AB31BCC034200FA276F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201D8AB21BCC034200FA276F /* CoreActionSheetPicker.framework */; settings = {ASSET_TAGS = (); }; };
+		201D8AB31BCC034200FA276F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201D8AB21BCC034200FA276F /* CoreActionSheetPicker.framework */; };
 		20203A091BC565D7008BBDEB /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
 		202751691BC5726900893C47 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
 		2027516A1BC572C300893C47 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; };
 		2027516C1BC578BA00893C47 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2027516B1BC578BA00893C47 /* HealthKit.framework */; };
 		2042645D1BC5B00800FAE77F /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042645C1BC5B00800FAE77F /* ComplicationController.swift */; };
-		20586B6A1BCD768D008E190A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20586B691BCD768D008E190A /* NotificationCenter.framework */; settings = {ASSET_TAGS = (); }; };
+		20586B6A1BCD768D008E190A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20586B691BCD768D008E190A /* NotificationCenter.framework */; };
 		20586B6D1BCD768D008E190A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20586B6C1BCD768D008E190A /* TodayViewController.swift */; };
 		20586B701BCD768D008E190A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20586B6E1BCD768D008E190A /* MainInterface.storyboard */; };
 		20586B741BCD768D008E190A /* today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 20586B671BCD768D008E190A /* today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		20586B791BCD773C008E190A /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; settings = {ASSET_TAGS = (); }; };
-		20586B7A1BCD7769008E190A /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; settings = {ASSET_TAGS = (); }; };
-		20586B7B1BCD77EE008E190A /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9EC1B8F60630073D766 /* ProgressView.swift */; settings = {ASSET_TAGS = (); }; };
-		20586B7C1BCD77FB008E190A /* UIColor+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9F21B8F60F80073D766 /* UIColor+EveryStep.swift */; settings = {ASSET_TAGS = (); }; };
+		20586B791BCD773C008E190A /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
+		20586B7A1BCD7769008E190A /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
+		20586B7B1BCD77EE008E190A /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9EC1B8F60630073D766 /* ProgressView.swift */; };
+		20586B7C1BCD77FB008E190A /* UIColor+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9F21B8F60F80073D766 /* UIColor+EveryStep.swift */; };
 		2062CACC1BB34E770031DF55 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; };
 		2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
 		2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; };
@@ -42,8 +42,8 @@
 		20B6640F1BC857BE00D22564 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B6640E1BC857BE00D22564 /* TextFieldCell.swift */; };
 		20CEE3721BB4645B007D069B /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
 		20CEE3741BB46F5D007D069B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CEE3731BB46F5D007D069B /* HealthKit.framework */; };
-		20E7769F1BCD7DD100E69860 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; settings = {ASSET_TAGS = (); }; };
-		20E776A01BCD7E1000E69860 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; settings = {ASSET_TAGS = (); }; };
+		20E7769F1BCD7DD100E69860 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; };
+		20E776A01BCD7E1000E69860 /* NSNumber+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

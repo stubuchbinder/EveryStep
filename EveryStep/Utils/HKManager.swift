@@ -40,7 +40,7 @@ class HKManager : NSObject {
         let stepCountType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
         let distanceType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!
         
-        healthStore.requestAuthorizationToShareTypes(NSSet(objects: calorieType, stepCountType, distanceType) as? Set<HKSampleType>, readTypes: NSSet(objects: calorieType, stepCountType, distanceType) as? Set<HKObjectType> ) { (success completed: Bool, error err: NSError?) -> Void in
+        healthStore.requestAuthorizationToShareTypes(nil, readTypes: NSSet(objects: calorieType, stepCountType, distanceType) as? Set<HKObjectType> ) { (success completed: Bool, error err: NSError?) -> Void in
             if err != nil {
                 completion(success: false, error: err!)
             } else {

@@ -176,13 +176,12 @@ class ActivityViewController: UIViewController {
             self.goalButton.setTitle("Goal - \(goal.commaDelimitedString())", forState: .Normal)
             
             // Distance
-            let miles = distance * 0.00062137
-            let mileString = NSString(format: "%0.1f", miles)
-            self.distanceLabel.text = "\(mileString) mi"
+            let mileString = NSString(format: "%0.1f", distance)
+            self.distanceLabel.text = "\(mileString) miles"
         
             // Calories
             let calorieString = NSString(format: "%1.0f", (calories / 1000))
-            self.calorieLabel.text = "\(calorieString) cal"
+            self.calorieLabel.text = "\(calorieString) cals"
       
       
         
