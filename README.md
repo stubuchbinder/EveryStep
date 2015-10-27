@@ -1,7 +1,16 @@
 # EveryStep
 
-Example application using CoreMotion to obtain step and distance count.
+## Installation
 
-HealthKit is used to obtain calorie count
+EveryStep links external frameworks with Carthage [https://github.com/Carthage/Carthage]  
 
-AppleWatch syncs with App using WatchConnectivity framework
+1) Install carthage using the packaged installer: https://github.com/Carthage/Carthage/releases/download/0.9.3/Carthage.pkg
+
+2) Download framework dependencies:
+
+```
+carthage update
+```
+
+
+
