@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Avenir.ttc">
-            <string>Avenir-Medium</string>
-            <string>Avenir-Medium</string>
-            <string>Avenir-Medium</string>
+            <string>Avenir-Book</string>
+            <string>Avenir-Book</string>
+            <string>Avenir-Book</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -20,41 +22,87 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="spatial" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KB9-zg-VTW">
-                                <rect key="frame" x="109" y="10" width="103" height="59"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYw-wH-woG" customClass="ProgressView" customModule="today" customModuleProvider="target">
+                                <rect key="frame" x="104" y="-6" width="112" height="112"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12,000 / 15, 000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dj-tw-742">
-                                        <rect key="frame" x="0.0" y="0.0" width="103" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJS-Ra-r8u">
+                                        <rect key="frame" x="28" y="47" width="56" height="18"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsr-pR-JcV">
-                                        <rect key="frame" x="32" y="19" width="39" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STEPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prI-fD-1pX">
+                                        <rect key="frame" x="42" y="79" width="29" height="14"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wu-6G-05P">
-                                        <rect key="frame" x="47" y="39" width="8" height="20"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="10"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <animations/>
-                            </stackView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="prI-fD-1pX" firstAttribute="top" secondItem="IJS-Ra-r8u" secondAttribute="bottom" constant="14" id="QQL-t1-0gf"/>
+                                    <constraint firstAttribute="width" secondItem="xYw-wH-woG" secondAttribute="height" multiplier="1:1" id="cWA-3U-OYz"/>
+                                    <constraint firstItem="IJS-Ra-r8u" firstAttribute="width" secondItem="xYw-wH-woG" secondAttribute="width" multiplier="0.5" id="fOm-sI-8BR"/>
+                                    <constraint firstItem="IJS-Ra-r8u" firstAttribute="centerY" secondItem="xYw-wH-woG" secondAttribute="centerY" id="hw5-a1-JH7"/>
+                                    <constraint firstItem="IJS-Ra-r8u" firstAttribute="centerX" secondItem="xYw-wH-woG" secondAttribute="centerX" id="jl8-U9-prr"/>
+                                    <constraint firstItem="prI-fD-1pX" firstAttribute="centerX" secondItem="xYw-wH-woG" secondAttribute="centerX" id="wTy-fn-CJj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gutterColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FZ-MY-5zA">
+                                <rect key="frame" x="10" y="41" width="84" height="18"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hC-2a-Rul">
+                                <rect key="frame" x="226" y="41" width="84" height="18"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MILES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXI-Y7-wfZ">
+                                <rect key="frame" x="38" y="73" width="28" height="14"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="10"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CALS." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQP-w7-zAh">
+                                <rect key="frame" x="254" y="73" width="28" height="14"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="10"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <constraints>
-                            <constraint firstItem="KB9-zg-VTW" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="10" id="dT3-BW-2ze"/>
-                            <constraint firstItem="KB9-zg-VTW" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="hzh-xk-O4C"/>
+                            <constraint firstItem="xYw-wH-woG" firstAttribute="width" secondItem="S3S-Oj-5AN" secondAttribute="width" multiplier="0.35" id="8WK-nc-qoS"/>
+                            <constraint firstItem="EQP-w7-zAh" firstAttribute="centerX" secondItem="0hC-2a-Rul" secondAttribute="centerX" id="91L-me-0m5"/>
+                            <constraint firstItem="2FZ-MY-5zA" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="10" id="IiX-aZ-OGx"/>
+                            <constraint firstItem="0hC-2a-Rul" firstAttribute="leading" secondItem="xYw-wH-woG" secondAttribute="trailing" constant="10" id="JCW-yz-wNM"/>
+                            <constraint firstItem="IXI-Y7-wfZ" firstAttribute="top" secondItem="2FZ-MY-5zA" secondAttribute="bottom" constant="14" id="RJi-uG-gBj"/>
+                            <constraint firstItem="2FZ-MY-5zA" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="VQ5-Ly-ca6"/>
+                            <constraint firstItem="xYw-wH-woG" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="WyZ-Qy-sFv"/>
+                            <constraint firstItem="2FZ-MY-5zA" firstAttribute="centerX" secondItem="IXI-Y7-wfZ" secondAttribute="centerX" id="aFK-O5-Cnh"/>
+                            <constraint firstItem="0hC-2a-Rul" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="bjY-0a-mzD"/>
+                            <constraint firstItem="xYw-wH-woG" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="mm6-V1-Eqf"/>
+                            <constraint firstItem="xYw-wH-woG" firstAttribute="leading" secondItem="2FZ-MY-5zA" secondAttribute="trailing" constant="10" id="pfk-b8-f1d"/>
+                            <constraint firstItem="EQP-w7-zAh" firstAttribute="top" secondItem="0hC-2a-Rul" secondAttribute="bottom" constant="14" id="v6H-A4-Ycj"/>
+                            <constraint firstAttribute="trailing" secondItem="0hC-2a-Rul" secondAttribute="trailing" constant="10" id="zQQ-nx-CAS"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -62,11 +110,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="80"/>
+                    <size key="freeformSize" width="320" height="100"/>
                     <connections>
-                        <outlet property="calorieLabel" destination="8Wu-6G-05P" id="d0N-8m-lpb"/>
-                        <outlet property="distanceLabel" destination="Bsr-pR-JcV" id="BcK-jB-hNk"/>
-                        <outlet property="stepCountLabel" destination="5dj-tw-742" id="gl4-Lt-5Wy"/>
+                        <outlet property="calorieLabel" destination="0hC-2a-Rul" id="7Q4-jS-qVP"/>
+                        <outlet property="distanceLabel" destination="2FZ-MY-5zA" id="aUm-dg-pLi"/>
+                        <outlet property="progressView" destination="xYw-wH-woG" id="8qq-gu-HdN"/>
+                        <outlet property="stepCountLabel" destination="IJS-Ra-r8u" id="NQz-pE-ncE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>

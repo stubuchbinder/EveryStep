@@ -14,6 +14,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var calorieLabel: UILabel!
     @IBOutlet weak var stepCountLabel: UILabel!
+    @IBOutlet weak var progressView : ProgressView!
     
     let healthKitManager = HKManager.defaultManager
     
@@ -59,8 +60,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private func updateContentSize() {
         let contentWidth = self.view.bounds.width
-        let contentHeight : CGFloat = (calories == 0.0) ? 60.0 : 80.0
+        let contentHeight : CGFloat = 120.0
         self.preferredContentSize = CGSize(width: contentWidth, height: contentHeight)
+    }
+    
+    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsetsZero
     }
     
     
@@ -120,15 +125,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             let goal = NSNumber(integer: self.currentUser.currentGoal)
             let calories = self.currentUser.currentCalories
         
-            self.stepCountLabel.text = "\(steps.commaDelimitedString()) / \(goal.commaDelimitedString())"
+            let progress = steps.doubleValue / goal.doubleValue
+        
+            self.progressView.progress = Float(progress)
+        
+            self.stepCountLabel.text = steps.commaDelimitedString()
    
-            let miles = distance * 0.00062137
-            let mileString = NSString(format: "%0.1f", miles)
+            let mileString = NSString(format: "%0.1f", distance)
             self.distanceLabel.text = "\(mileString)"
 
             let calorieString = NSString(format: "%1.0f", (calories / 1000))
-            self.calorieLabel.text = "\(calorieString) cal"
-            self.calorieLabel.hidden = (calories == 0.0)
+            self.calorieLabel.text = "\(calorieString)"
     }
     
     
