@@ -10,6 +10,9 @@ import Foundation
 
 extension NSNumber {
     
+    /**
+        Converts the NSNumber to a comma delimited number string (i.e. 10,000)
+    */
     func commaDelimitedString() -> String {
         let formatter = NSNumberFormatter()
         formatter.numberStyle = .DecimalStyle
