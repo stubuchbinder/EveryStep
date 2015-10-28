@@ -32,10 +32,10 @@
 		206EC9EB1B8F5F530073D766 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9EA1B8F5F530073D766 /* SettingsViewController.swift */; };
 		206EC9ED1B8F60630073D766 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9EC1B8F60630073D766 /* ProgressView.swift */; };
 		206EC9F31B8F60F80073D766 /* UIColor+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206EC9F21B8F60F80073D766 /* UIColor+EveryStep.swift */; };
+		208663E51BE1921500C08A3F /* ActivityInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208663E41BE1921500C08A3F /* ActivityInterfaceController.swift */; };
 		209031611BBC803800ED697F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2090315F1BBC803800ED697F /* Interface.storyboard */; };
 		209031631BBC803800ED697F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209031621BBC803800ED697F /* Assets.xcassets */; };
 		2090316A1BBC803800ED697F /* watchapp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 209031691BBC803800ED697F /* watchapp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		2090316F1BBC803800ED697F /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2090316E1BBC803800ED697F /* InterfaceController.swift */; };
 		209031711BBC803800ED697F /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209031701BBC803800ED697F /* ExtensionDelegate.swift */; };
 		209031731BBC803800ED697F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209031721BBC803800ED697F /* Assets.xcassets */; };
 		209031771BBC803800ED697F /* watchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2090315D1BBC803800ED697F /* watchapp.app */; };
@@ -129,12 +129,12 @@
 		206EC9EA1B8F5F530073D766 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		206EC9EC1B8F60630073D766 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		206EC9F21B8F60F80073D766 /* UIColor+EveryStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+EveryStep.swift"; sourceTree = "<group>"; };
+		208663E41BE1921500C08A3F /* ActivityInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityInterfaceController.swift; sourceTree = "<group>"; };
 		2090315D1BBC803800ED697F /* watchapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		209031601BBC803800ED697F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		209031621BBC803800ED697F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		209031641BBC803800ED697F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		209031691BBC803800ED697F /* watchapp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watchapp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2090316E1BBC803800ED697F /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		209031701BBC803800ED697F /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		209031721BBC803800ED697F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		209031741BBC803800ED697F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				20CEE3751BB46F5D007D069B /* EveryStep.entitlements */,
-				206EC9EE1B8F60D90073D766 /* Utils */,
+				206EC9EE1B8F60D90073D766 /* Utils (Shared) */,
 				206EC9E41B8F5F0D0073D766 /* Application */,
 				206EC9E61B8F5F0D0073D766 /* Controllers */,
 				206EC9DD1B8F5EE40073D766 /* UI */,
@@ -260,13 +260,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		206EC9EE1B8F60D90073D766 /* Utils */ = {
+		206EC9EE1B8F60D90073D766 /* Utils (Shared) */ = {
 			isa = PBXGroup;
 			children = (
 				206EC9EF1B8F60D90073D766 /* Extensions */,
 				2062CACD1BB350B70031DF55 /* ESUserController.swift */,
 				20CEE3711BB4645B007D069B /* HKManager.swift */,
 			);
+			name = "Utils (Shared)";
 			path = Utils;
 			sourceTree = "<group>";
 		};
@@ -293,11 +294,11 @@
 			isa = PBXGroup;
 			children = (
 				2027516D1BC578BA00893C47 /* watchapp Extension.entitlements */,
-				2090316E1BBC803800ED697F /* InterfaceController.swift */,
 				209031701BBC803800ED697F /* ExtensionDelegate.swift */,
 				209031721BBC803800ED697F /* Assets.xcassets */,
 				209031741BBC803800ED697F /* Info.plist */,
 				2042645C1BC5B00800FAE77F /* ComplicationController.swift */,
+				208663E41BE1921500C08A3F /* ActivityInterfaceController.swift */,
 			);
 			path = "watchapp Extension";
 			sourceTree = "<group>";
@@ -535,8 +536,8 @@
 				20203A091BC565D7008BBDEB /* HKManager.swift in Sources */,
 				202751691BC5726900893C47 /* ESUserController.swift in Sources */,
 				209031711BBC803800ED697F /* ExtensionDelegate.swift in Sources */,
+				208663E51BE1921500C08A3F /* ActivityInterfaceController.swift in Sources */,
 				2042645D1BC5B00800FAE77F /* ComplicationController.swift in Sources */,
-				2090316F1BBC803800ED697F /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

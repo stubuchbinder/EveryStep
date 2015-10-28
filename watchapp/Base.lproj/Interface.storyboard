@@ -1,59 +1,83 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J7q-6b-WR3">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J7q-6b-WR3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Activity Interface Controller-->
         <scene sceneID="8g4-e0-mxS">
             <objects>
-                <controller hidesWhenLoading="NO" id="J7q-6b-WR3" customClass="InterfaceController" customModule="watchapp_Extension">
+                <controller hidesWhenLoading="NO" id="J7q-6b-WR3" customClass="ActivityInterfaceController" customModule="watchapp_Extension">
                     <items>
-                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="8" id="CxN-4E-N6l">
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="CxN-4E-N6l">
                             <items>
-                                <group width="1" alignment="left" id="QNE-aD-FUD">
-                                    <items>
-                                        <label width="65" alignment="left" text="steps:      " id="Lsa-Hb-X7z">
-                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
-                                        </label>
-                                        <label width="70" alignment="left" text="0" textAlignment="center" id="hoh-kB-cxl">
-                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                        </label>
-                                    </items>
-                                </group>
-                                <group width="1" alignment="left" id="UfF-Uy-NIh">
-                                    <items>
-                                        <label width="65" alignment="left" text="calories:" id="hHD-g8-iqj">
-                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
-                                        </label>
-                                        <label width="70" alignment="left" text="0" textAlignment="center" id="hlm-7D-5zR">
-                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                        </label>
-                                    </items>
-                                </group>
-                                <group width="1" alignment="left" id="Zf9-jN-UWN">
-                                    <items>
-                                        <label width="65" alignment="left" text="distance:" id="P8z-AN-ltg">
-                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
-                                        </label>
-                                        <label width="70" alignment="left" text="0" textAlignment="center" id="5gT-e9-47u">
-                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                        </label>
-                                    </items>
-                                </group>
+                                <label width="1" alignment="center" text="0" textAlignment="center" minimumScaleFactor="0.59999999999999998" id="7ya-YW-wyZ">
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="30"/>
+                                </label>
+                                <label alignment="center" text="STEPS" textAlignment="center" id="q1o-Oz-YoI">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
                             </items>
-                            <edgeInsets key="margins" left="3" right="3" top="0.0" bottom="0.0"/>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                         </group>
                     </items>
                     <connections>
-                        <outlet property="calorieLabel" destination="hlm-7D-5zR" id="zwB-FM-Hym"/>
-                        <outlet property="distanceLabel" destination="5gT-e9-47u" id="3ww-7q-010"/>
-                        <outlet property="stepLabel" destination="hoh-kB-cxl" id="EGc-f8-oAs"/>
+                        <outlet property="stepCountLabel" destination="7ya-YW-wyZ" id="pzV-ur-KZl"/>
+                        <segue destination="kmq-Pw-8kV" kind="relationship" relationship="nextPage" id="s3F-ML-mFt"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="1081" y="516"/>
+            <point key="canvasLocation" x="207" y="458"/>
+        </scene>
+        <!--Activity Interface Controller-->
+        <scene sceneID="gOR-d4-uEo">
+            <objects>
+                <controller hidesWhenLoading="NO" id="kmq-Pw-8kV" customClass="ActivityInterfaceController" customModule="watchapp_Extension">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="yo2-W8-ed3">
+                            <items>
+                                <label width="1" alignment="center" text="0" textAlignment="center" minimumScaleFactor="0.59999999999999998" id="Uiz-9Y-LV8">
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="30"/>
+                                </label>
+                                <label alignment="center" text="MILES" textAlignment="center" id="c73-sk-sOT">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="distanceLabel" destination="Uiz-9Y-LV8" id="3at-cb-QLI"/>
+                        <segue destination="EnA-V5-Ea7" kind="relationship" relationship="nextPage" id="JdN-76-vyU"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="420" y="686"/>
+        </scene>
+        <!--Activity Interface Controller-->
+        <scene sceneID="1WU-FK-Axd">
+            <objects>
+                <controller hidesWhenLoading="NO" id="EnA-V5-Ea7" customClass="ActivityInterfaceController" customModule="watchapp_Extension">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="gdH-Pa-CE3">
+                            <items>
+                                <label width="1" alignment="center" text="0" textAlignment="center" minimumScaleFactor="0.59999999999999998" id="WgN-Zt-fPw">
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="30"/>
+                                </label>
+                                <label alignment="center" text="CALORIES" textAlignment="center" id="g7o-KQ-ZlO">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="calorieLabel" destination="WgN-Zt-fPw" id="yca-pB-Du6"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="685" y="458"/>
         </scene>
     </scenes>
 </document>
