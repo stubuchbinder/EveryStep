@@ -8,13 +8,17 @@
 
 import Foundation
 
+
+// MARK: - ESUserController
 class ESUserController {
     
     let URL_PATH = "EVERYSTEP_USER"
-    
     private var user : ESUser?
     
-
+    
+    /**
+        Singleton accessor
+    */
     class var defaultController : ESUserController {
         struct Singleton {
             static let instance = ESUserController()
@@ -25,7 +29,7 @@ class ESUserController {
     
     /**
         Save the user to disk with closure
-    **/
+    */
     func saveUser(completion completion:((success : Bool) -> Void)?) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
             let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
@@ -47,10 +51,8 @@ class ESUserController {
     }
     
     /**
-        Retrieve the current user from the disk if it esists. 
-    
-        If the user does not exist, create one and return it
-    **/
+        Retrieve the current user from the disk if it esists. If the user does not exist, create one and return it
+    */
     func currentUser() -> ESUser {
         if user == nil {
             let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
@@ -70,38 +72,45 @@ class ESUserController {
 }
 
 
+// MARK: - ESUser
 class ESUser : NSObject, NSCoding {
     
+    // Daily step goal
     var currentGoal : Int = 10000 {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
+    // Total number of steps the user has taken today
     var currentSteps : Int = 0 {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
+    // Distance the user has walked today
     var currentDistance : Double = 0.0 {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
+    // Daily active calorie burn
     var currentCalories : Double = 0.0 {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
+    // Local notification is sent when the user has been sitting idle for an hour
     var idleTime : Int = (60 * 60) {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
         }
     }
     
+    // The date of the last synchronization between the apple watch and the app (currently not used)
     var lastUpdate : NSDate = NSDate() {
         didSet {
             ESUserController.defaultController.saveUser(completion: nil)
@@ -114,8 +123,11 @@ class ESUser : NSObject, NSCoding {
     }
 
 
-     required init(coder aDecoder: NSCoder) {
-
+    /**
+     Initialize user variables from the NSCoder
+    */
+    required init(coder aDecoder: NSCoder) {
+        
         let steps = aDecoder.decodeIntForKey("steps")
         let goal = aDecoder.decodeIntForKey("goal")
         let distance = aDecoder.decodeDoubleForKey("distance")
@@ -129,10 +141,13 @@ class ESUser : NSObject, NSCoding {
         self.currentCalories = calories
         self.idleTime = Int(idleTime)
         self.lastUpdate = lastUpdate
-    
-    
+        
+        
     }
     
+    /**
+     Save user values to NSCoder
+    */
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeInteger(self.currentSteps, forKey: "steps")
         aCoder.encodeInteger(self.currentGoal, forKey: "goal")
