@@ -12,7 +12,13 @@ import HealthKit
 class HKManager : NSObject {
     
     let healthStore = HKHealthStore()
+    
+    let calorieQuantityType : HKQuantityType! = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)
+    let stepCountQuantityType : HKQuantityType! = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+    let distanceQuantityType : HKQuantityType!  = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)
+    
     var isAuthorized = false
+    
     
     class var defaultManager : HKManager {
         
@@ -36,11 +42,7 @@ class HKManager : NSObject {
             return
         }
         
-        let calorieType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
-        let stepCountType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
-        let distanceType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!
-        
-        healthStore.requestAuthorizationToShareTypes(nil, readTypes: NSSet(objects: calorieType, stepCountType, distanceType) as? Set<HKObjectType> ) { (success completed: Bool, error err: NSError?) -> Void in
+        healthStore.requestAuthorizationToShareTypes(nil, readTypes: NSSet(objects: calorieQuantityType, stepCountQuantityType, distanceQuantityType) as? Set<HKObjectType> ) { (success completed: Bool, error err: NSError?) -> Void in
             if err != nil {
                 completion(success: false, error: err!)
             } else {
@@ -62,9 +64,8 @@ class HKManager : NSObject {
     
     
     func stepCount(completion:(success : Bool, result : AnyObject?) -> Void ) {
-        let stepCountType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
-        
-        let query = HKStatisticsQuery(quantityType: stepCountType, quantitySamplePredicate: predicateSamplesForToday(), options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
+  
+        let query = HKStatisticsQuery(quantityType: stepCountQuantityType, quantitySamplePredicate: predicateSamplesForToday(), options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
   
             if let _ = error {
                 completion(success: false, result: error)
@@ -84,9 +85,8 @@ class HKManager : NSObject {
         healthStore.executeQuery(query)
     }
     func activeEnergyBurned(completion: (success : Bool, result : AnyObject?) -> Void) {
-        let activeEnergyBurnType : HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
     
-        let query = HKStatisticsQuery(quantityType: activeEnergyBurnType, quantitySamplePredicate: predicateSamplesForToday(), options: HKStatisticsOptions.CumulativeSum) { (query : HKStatisticsQuery, result : HKStatistics?, error : NSError?) -> Void in
+        let query = HKStatisticsQuery(quantityType: calorieQuantityType, quantitySamplePredicate: predicateSamplesForToday(), options: HKStatisticsOptions.CumulativeSum) { (query : HKStatisticsQuery, result : HKStatistics?, error : NSError?) -> Void in
             if let _ = error {
                 completion(success: false, result: error)
                 return
@@ -106,9 +106,8 @@ class HKManager : NSObject {
     }
     
     func distance(completion:(success : Bool, result : AnyObject?) -> Void ) {
-        let distanceType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!
- 
-        let query = HKStatisticsQuery(quantityType: distanceType, quantitySamplePredicate: predicateSamplesForToday(), options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
+   
+        let query = HKStatisticsQuery(quantityType: distanceQuantityType, quantitySamplePredicate: predicateSamplesForToday(), options: .CumulativeSum) { (query: HKStatisticsQuery, result: HKStatistics?, error: NSError?) -> Void in
             
             if let _ = error {
                 completion(success: false, result: error)
