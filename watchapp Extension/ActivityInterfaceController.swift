@@ -45,7 +45,7 @@ class ActivityInterfaceController: WKInterfaceController {
         }
         
         if let _ = distanceLabel {
-            let totalDistance = NSString(format: "%0.1f", self.currentUser.currentDistance * 0.00062137)
+            let totalDistance = NSString(format: "%0.1f", self.currentUser.currentDistance)
             distanceLabel!.setText(totalDistance as StringLiteralType)
         }
         
