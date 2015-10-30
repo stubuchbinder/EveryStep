@@ -85,7 +85,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                             print("Error getting distance: \((result as! NSError).localizedDescription)")
                         }
                         
-                        NSNotificationCenter.defaultCenter().postNotificationName(Notification.Activity.rawValue, object: nil)
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            NSNotificationCenter.defaultCenter().postNotificationName(Notification.Activity.rawValue, object: nil)
+                        })
+                        
                     })
                 })
             })

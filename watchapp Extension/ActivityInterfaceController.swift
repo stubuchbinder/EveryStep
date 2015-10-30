@@ -15,14 +15,13 @@ class ActivityInterfaceController: WKInterfaceController {
     @IBOutlet var stepCountLabel: WKInterfaceLabel?
     @IBOutlet var distanceLabel: WKInterfaceLabel?
     @IBOutlet var calorieLabel: WKInterfaceLabel?
-    
+
     let currentUser = ESUserController.defaultController.currentUser()
     
     
     // MARK: Lifecycle
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "activityNotification:", name: Notification.Activity.rawValue, object: nil)
     }
 
@@ -30,6 +29,10 @@ class ActivityInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         update()
+        
+        if let extDelegate = WKExtension.sharedExtension().delegate as? ExtensionDelegate {
+            extDelegate.loadData()
+        }
     }
 
     
@@ -37,6 +40,8 @@ class ActivityInterfaceController: WKInterfaceController {
     
     func activityNotification(notification : NSNotification) {
         update()
+       
+      
     }
     
     private func update() {
