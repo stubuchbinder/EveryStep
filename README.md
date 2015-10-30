@@ -1,16 +1,10 @@
-# EveryStep
+### EveryStep
+
+EveryStep is a pedometer application for the iPhone that keeps track of your step count, distance, and calorie burn using HealthKit. 
 
 ## Installation
 
-EveryStep links external frameworks with Carthage [https://github.com/Carthage/Carthage]  
-
-1) Install carthage using the packaged installer: https://github.com/Carthage/Carthage/releases/download/0.9.3/Carthage.pkg
-
-2) Download framework dependencies:
-
-```
-carthage update
-```
+EveryStep uses a Carthage to link the CoreActionSheetPicker framework. This framework is used when setting the 'idle time' setting in the application.
 
 
 
