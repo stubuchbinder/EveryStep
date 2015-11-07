@@ -42,7 +42,7 @@ class HKManager : NSObject {
             return
         }
         
-        healthStore.requestAuthorizationToShareTypes(nil, readTypes: NSSet(objects: calorieQuantityType, stepCountQuantityType, distanceQuantityType) as? Set<HKObjectType> ) { (success completed: Bool, error err: NSError?) -> Void in
+        healthStore.requestAuthorizationToShareTypes(nil, readTypes: NSSet(objects: calorieQuantityType) as? Set<HKObjectType> ) { (success completed: Bool, error err: NSError?) -> Void in
             if err != nil {
                 completion(success: false, error: err!)
             } else {

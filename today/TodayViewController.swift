@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationCenter
+import CoreMotion
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     
@@ -17,6 +18,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var progressView : ProgressView!
     
     let healthKitManager = HKManager.defaultManager
+    let pedometerManager = CMPedometerManager.defaultManager
     
     let currentUser = ESUserController.defaultController.currentUser()
     
@@ -73,40 +75,40 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         if healthKitManager.isAuthorized {
             
-            // Steps
-            healthKitManager.stepCount { (success, result) -> Void in
-                if success {
-                    self.steps = result as! Int
+            
+            pedometerManager.currentPedometerData({ (success, result) -> Void in
+                if success == false {
+                    print("Error getting step count: \(result as! NSError)")
                 } else {
-                    self.steps = 0
-                    print("Error getting step count: \((result as! NSError).localizedDescription)")
-                }
-                
-                // Distance
-                self.healthKitManager.distance { (success, result) -> Void in
-                    if success {
-                        self.distance = result as! Double
-                    } else {
-                        self.distance = 0.0
-                        print("Error getting distance: \((result as! NSError).localizedDescription)")
-                    }
-                    
-                    // Calories
-                    self.healthKitManager.activeEnergyBurned { (success, result) -> Void in
-                        if success == true {
-                            self.calories = result as! Double
-                        } else {
-                            self.calories = 0.0
-                            print("Error getting distance: \((result as! NSError).localizedDescription)")
-                        }
+                    if let data = result as? CMPedometerData {
+                        
+                        self.steps = data.numberOfSteps.integerValue
+                        self.distance = (data.distance?.doubleValue)!
+                  
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.updateProgress()
+                    
                         })
-                        
                     }
                 }
-            }
+            })
+            
+            self.healthKitManager.activeEnergyBurned({ (success, result) -> Void in
+                if success == true {
+                    self.calories = result as! Double
+                } else {
+                    self.calories = 0.0
+                    print("Error getting distance: \((result as! NSError).localizedDescription)")
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.updateProgress()
+                    
+                })
+                
+            })
+            
         } else {
             healthKitManager.authorizeHealthKit({ (success, error) -> Void in
                 if success {
@@ -117,6 +119,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             })
         }
     }
+
     
     private func updateProgress() {
         
@@ -131,11 +134,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
             self.stepCountLabel.text = steps.commaDelimitedString()
    
-            let mileString = NSString(format: "%0.1f", distance)
+            // convert distance (meters) to miles
+            let miles = distance * 0.00062137
+            let mileString = NSString(format: "%0.1f", miles)
             self.distanceLabel.text = "\(mileString)"
 
             let calorieString = NSString(format: "%1.0f", (calories / 1000))
-            self.calorieLabel.text = "\(calorieString)"
+        self.calorieLabel.text = (calories == 0) ? "N/A" : "\(calorieString)"
     }
     
     

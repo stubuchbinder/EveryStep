@@ -11,16 +11,17 @@ import CoreMotion
 import WatchConnectivity
 
 class ActivityViewController: UIViewController {
-
+    
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var calorieLabel: UILabel!
     @IBOutlet weak var stepCountLabel: UILabel!
     @IBOutlet weak var goalButton: GoalButton!
     @IBOutlet weak var progressView: ProgressView!
-   
+    
     let currentUser = ESUserController.defaultController.currentUser()
     
     let healthKitManager = HKManager.defaultManager
+    let pedometerManager = CMPedometerManager.defaultManager
     
     var session : WCSession?
     
@@ -42,6 +43,12 @@ class ActivityViewController: UIViewController {
         }
     }
     
+    var lastUpdate : NSDate = NSDate() {
+        didSet {
+            currentUser.lastUpdate = lastUpdate
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,16 +65,16 @@ class ActivityViewController: UIViewController {
     
     
     /**
-        Refresh UI for any changes that may have happened on the settings screen
-    */
+     Refresh UI for any changes that may have happened on the settings screen
+     */
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         updateProgress()
     }
     
     /**
-        Start watch connectivity session so that we can hand off / receive any updates to & from the watch app
-    */
+     Start watch connectivity session so that we can hand off / receive any updates to & from the watch app
+     */
     private func startSession() {
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
@@ -77,20 +84,20 @@ class ActivityViewController: UIViewController {
     }
     
     /**
-        Send a message payload to the watch app so that data can remain in sync
-    */
+     Send a message payload to the watch app so that data can remain in sync
+     */
     private func broadcast() {
-//        if let session = session where session.reachable {
-//            session.sendMessage(["steps": steps, "calories": calories, "distance": distance, "lastUpdate" : NSDate()], replyHandler: nil, errorHandler: { (error) -> Void in
-//                print(error)
-//            })
-//        }
+        //        if let session = session where session.reachable {
+        //            session.sendMessage(["steps": steps, "calories": calories, "distance": distance, "lastUpdate" : NSDate()], replyHandler: nil, errorHandler: { (error) -> Void in
+        //                print(error)
+        //            })
+        //        }
         
     }
     
     /**
-        Helper method to return the start of the current day (12am)
-    */
+     Helper method to return the start of the current day (12am)
+     */
     private func midnightOfToday() -> NSDate {
         
         let calendar = NSCalendar.currentCalendar()
@@ -105,42 +112,41 @@ class ActivityViewController: UIViewController {
         
         if healthKitManager.isAuthorized {
             
-            // Steps
-            healthKitManager.stepCount { (success, result) -> Void in
-                if success {
-                    self.steps = result as! Int
+            
+            CMPedometerManager.defaultManager.currentPedometerData({ (success, result) -> Void in
+                if success == false {
+                    print("Error getting step count: \(result as! NSError)")
                 } else {
-                    self.steps = 0
-                    print("Error getting step count: \((result as! NSError).localizedDescription)")
-                }
-                
-                // Distance
-                self.healthKitManager.distance { (success, result) -> Void in
-                    if success {
-                        self.distance = result as! Double
-                    } else {
-                        self.distance = 0.0
-                        print("Error getting distance: \((result as! NSError).localizedDescription)")
-                    }
-                    
-                    // Calories
-                    self.healthKitManager.activeEnergyBurned { (success, result) -> Void in
-                        if success == true {
-                            self.calories = result as! Double
-                        } else {
-                            self.calories = 0.0
-                            print("Error getting distance: \((result as! NSError).localizedDescription)")
-                        }
+                    if let data = result as? CMPedometerData {
+                        
+                        self.steps = data.numberOfSteps.integerValue
+                        self.distance = (data.distance?.doubleValue)!
+                        self.lastUpdate = data.endDate
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.updateProgress()
                             self.broadcast()
-                            (UIApplication.sharedApplication().delegate as! AppDelegate).sheduleIdleTimerNotification()
                         })
-                        
                     }
                 }
-            }
+            })
+            
+            self.healthKitManager.activeEnergyBurned({ (success, result) -> Void in
+                if success == true {
+                    self.calories = result as! Double
+                } else {
+                    self.calories = 0.0
+                    print("Error getting distance: \((result as! NSError).localizedDescription)")
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.updateProgress()
+                    self.broadcast()
+                    
+                })
+                
+            })
+            
         } else {
             healthKitManager.authorizeHealthKit({ (success, error) -> Void in
                 if success {
@@ -151,53 +157,55 @@ class ActivityViewController: UIViewController {
             })
         }
     }
-
-
-
+    
+    
+    
     
     /**
-        Refreshes the UI based on the data in 'currentUser'
-    */
+     Refreshes the UI based on the data in 'currentUser'
+     */
     func updateProgress() {
-
-            let steps = NSNumber(integer: self.currentUser.currentSteps)
-            let distance = self.currentUser.currentDistance
-            let goal = NSNumber(integer: self.currentUser.currentGoal)
-            let calories = self.currentUser.currentCalories
-            
-            // step count
-            self.stepCountLabel.text = steps.commaDelimitedString()
-            
-            // progress
-            let progress = Float(steps.doubleValue / goal.doubleValue)
-            self.progressView.progress = progress
-            
-            // update the current goal
-            self.goalButton.setTitle("Goal - \(goal.commaDelimitedString())", forState: .Normal)
-            
-            // Distance
-            let mileString = NSString(format: "%0.1f", distance)
-            self.distanceLabel.text = "\(mileString) miles"
         
-            // Calories
-            let calorieString = NSString(format: "%1.0f", (calories / 1000))
-            self.calorieLabel.text = "\(calorieString) cals"
-      
-      
+        let steps = NSNumber(integer: self.currentUser.currentSteps)
+        let distance = self.currentUser.currentDistance
+        let goal = NSNumber(integer: self.currentUser.currentGoal)
+        let calories = self.currentUser.currentCalories
         
+        // step count
+        self.stepCountLabel.text = steps.commaDelimitedString()
+        
+        // progress
+        let progress = Float(steps.doubleValue / goal.doubleValue)
+        self.progressView.progress = progress
+        
+        // update the current goal
+        self.goalButton.setTitle("Goal - \(goal.commaDelimitedString())", forState: .Normal)
+        
+        // Convert distance (meters) to miles
+        let miles = distance * 0.00062137
+        let mileString = NSString(format: "%0.1f", miles)
+        self.distanceLabel.text = "\(mileString) miles"
+        
+        // Calories
+        
+        let calorieString = NSString(format: "%1.0f", (calories / 1000))
+        self.calorieLabel.text = "\(calorieString) cals"
+        
+        // reset idle timer and start it again
+        (UIApplication.sharedApplication().delegate as! AppDelegate).sheduleIdleTimerNotification()
     }
-
-    /**
-        User pressed the goal button.
     
-        Display a text field alert so that the user can update their goal
-    */
+    /**
+     User pressed the goal button.
+     
+     Display a text field alert so that the user can update their goal
+     */
     @IBAction func pressedGoalButton(sender: AnyObject) {
         
         let alertController = UIAlertController(title: "New Goal", message: "Set a new daily step goal", preferredStyle: .Alert)
         
         let saveAction = UIAlertAction(title: "Save", style: .Default) { (action) -> Void in
-            let textField = alertController.textFields![0] 
+            let textField = alertController.textFields![0]
             
             if textField.text!.isEmpty { return }
             
@@ -224,13 +232,13 @@ class ActivityViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
         
     }
-
+    
 }
 
 extension ActivityViewController : WCSessionDelegate {
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-    
+        
         if let lastUpdate = message["lastUpdate"] as? NSDate {
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -249,10 +257,10 @@ extension ActivityViewController : WCSessionDelegate {
                 }
                 
                 self.updateProgress()
-
+                
             })
         }
-    
+        
     }
     
     

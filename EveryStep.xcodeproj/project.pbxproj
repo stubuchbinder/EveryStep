@@ -39,6 +39,12 @@
 		209031711BBC803800ED697F /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209031701BBC803800ED697F /* ExtensionDelegate.swift */; };
 		209031731BBC803800ED697F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209031721BBC803800ED697F /* Assets.xcassets */; };
 		209031771BBC803800ED697F /* watchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2090315D1BBC803800ED697F /* watchapp.app */; };
+		20A4B6AC1BEE5375003DFF5D /* CMPedometerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B6AB1BEE5375003DFF5D /* CMPedometerManager.swift */; };
+		20A4B6AD1BEE5375003DFF5D /* CMPedometerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B6AB1BEE5375003DFF5D /* CMPedometerManager.swift */; };
+		20A4B6AE1BEE5375003DFF5D /* CMPedometerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B6AB1BEE5375003DFF5D /* CMPedometerManager.swift */; };
+		20A4B6B01BEE5436003DFF5D /* NSDate+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B6AF1BEE5436003DFF5D /* NSDate+EveryStep.swift */; };
+		20A4B6B11BEE5436003DFF5D /* NSDate+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B6AF1BEE5436003DFF5D /* NSDate+EveryStep.swift */; };
+		20A4B6B21BEE5436003DFF5D /* NSDate+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B6AF1BEE5436003DFF5D /* NSDate+EveryStep.swift */; };
 		20B6640F1BC857BE00D22564 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B6640E1BC857BE00D22564 /* TextFieldCell.swift */; };
 		20CEE3721BB4645B007D069B /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
 		20CEE3741BB46F5D007D069B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CEE3731BB46F5D007D069B /* HealthKit.framework */; };
@@ -139,6 +145,8 @@
 		209031701BBC803800ED697F /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		209031721BBC803800ED697F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		209031741BBC803800ED697F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20A4B6AB1BEE5375003DFF5D /* CMPedometerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMPedometerManager.swift; sourceTree = "<group>"; };
+		20A4B6AF1BEE5436003DFF5D /* NSDate+EveryStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+EveryStep.swift"; sourceTree = "<group>"; };
 		20B6640E1BC857BE00D22564 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		20CEE3711BB4645B007D069B /* HKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKManager.swift; sourceTree = "<group>"; };
 		20CEE3731BB46F5D007D069B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -270,6 +278,7 @@
 				206EC9EF1B8F60D90073D766 /* Extensions */,
 				2062CACD1BB350B70031DF55 /* ESUserController.swift */,
 				20CEE3711BB4645B007D069B /* HKManager.swift */,
+				20A4B6AB1BEE5375003DFF5D /* CMPedometerManager.swift */,
 			);
 			name = "Utils (Shared)";
 			path = Utils;
@@ -280,6 +289,7 @@
 			children = (
 				206EC9F21B8F60F80073D766 /* UIColor+EveryStep.swift */,
 				2062CACF1BB358920031DF55 /* NSNumber+EveryStep.swift */,
+				20A4B6AF1BEE5436003DFF5D /* NSDate+EveryStep.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -513,10 +523,12 @@
 				20E7769F1BCD7DD100E69860 /* GoalButton.swift in Sources */,
 				20586B7A1BCD7769008E190A /* ESUserController.swift in Sources */,
 				20586B7B1BCD77EE008E190A /* ProgressView.swift in Sources */,
+				20A4B6AE1BEE5375003DFF5D /* CMPedometerManager.swift in Sources */,
 				20E776A01BCD7E1000E69860 /* NSNumber+EveryStep.swift in Sources */,
 				20586B7C1BCD77FB008E190A /* UIColor+EveryStep.swift in Sources */,
 				20586B791BCD773C008E190A /* HKManager.swift in Sources */,
 				20586B6D1BCD768D008E190A /* TodayViewController.swift in Sources */,
+				20A4B6B21BEE5436003DFF5D /* NSDate+EveryStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +538,7 @@
 			files = (
 				2062CACC1BB34E770031DF55 /* GoalButton.swift in Sources */,
 				2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */,
+				20A4B6B01BEE5436003DFF5D /* NSDate+EveryStep.swift in Sources */,
 				20B6640F1BC857BE00D22564 /* TextFieldCell.swift in Sources */,
 				206EC9E71B8F5F0D0073D766 /* AppDelegate.swift in Sources */,
 				206EC9ED1B8F60630073D766 /* ProgressView.swift in Sources */,
@@ -533,6 +546,7 @@
 				20CEE3721BB4645B007D069B /* HKManager.swift in Sources */,
 				206EC9E91B8F5F3A0073D766 /* ActivityViewController.swift in Sources */,
 				206EC9EB1B8F5F530073D766 /* SettingsViewController.swift in Sources */,
+				20A4B6AC1BEE5375003DFF5D /* CMPedometerManager.swift in Sources */,
 				2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,6 +557,8 @@
 			files = (
 				2027516A1BC572C300893C47 /* NSNumber+EveryStep.swift in Sources */,
 				20203A091BC565D7008BBDEB /* HKManager.swift in Sources */,
+				20A4B6B11BEE5436003DFF5D /* NSDate+EveryStep.swift in Sources */,
+				20A4B6AD1BEE5375003DFF5D /* CMPedometerManager.swift in Sources */,
 				202751691BC5726900893C47 /* ESUserController.swift in Sources */,
 				209031711BBC803800ED697F /* ExtensionDelegate.swift in Sources */,
 				208663E51BE1921500C08A3F /* ActivityInterfaceController.swift in Sources */,
