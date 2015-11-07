@@ -17,9 +17,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var stepCountLabel: UILabel!
     @IBOutlet weak var progressView : ProgressView!
     
-    let healthKitManager = HKManager.defaultManager
-    let pedometerManager = CMPedometerManager.defaultManager
-    
+
     let currentUser = ESUserController.defaultController.currentUser()
     
     
@@ -73,6 +71,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func loadData() {
         
+        let healthKitManager = HKManager.defaultManager
+        let pedometerManager = CMPedometerManager.defaultManager
+        
         if healthKitManager.isAuthorized {
             
             
@@ -94,7 +95,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 }
             })
             
-            self.healthKitManager.activeEnergyBurned({ (success, result) -> Void in
+            healthKitManager.activeEnergyBurned({ (success, result) -> Void in
                 if success == true {
                     self.calories = result as! Double
                 } else {

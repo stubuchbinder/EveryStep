@@ -7,6 +7,7 @@
 //
 
 import WatchKit
+import CoreMotion
 
 public enum Notification : String {
     case Activity = "activity_notification"
@@ -57,44 +58,46 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     */
     func loadData() {
         
-        let manager = HKManager.defaultManager
+        let pedometerManager = CMPedometerManager.defaultManager
+        let healthKitManager = HKManager.defaultManager
         
-        if manager.isAuthorized {
+        if healthKitManager.isAuthorized {
             
-            manager.stepCount({ (success, result) -> Void in
-                if success {
-                    self.steps = result as! Int
+            pedometerManager.currentPedometerData({ (success, result) -> Void in
+                if success == true {
+                    let data = result as! CMPedometerData
+                    self.steps = data.numberOfSteps.integerValue
+                    self.distance = (data.distance?.doubleValue)!
+                    
+                    
                 } else {
                     self.steps = 0
-                    print("Error getting step count: \((result as! NSError).localizedDescription)")
+                    self.distance = 0
+                    print("Error getting pedometer data: \(result as! NSError)")
                 }
                 
-                manager.distance({ (success, result) -> Void in
-                    if success {
-                        self.distance = result as! Double
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName(Notification.Activity.rawValue, object: nil)
+                })
+                
+                healthKitManager.activeEnergyBurned({ (success, result) -> Void in
+                    if success == true {
+                        self.calories = result as! Double
                     } else {
-                        self.distance = 0.0
+                        self.calories = 0.0
                         print("Error getting distance: \((result as! NSError).localizedDescription)")
                     }
                     
-                    manager.activeEnergyBurned({ (success, result) -> Void in
-                        if success == true {
-                            self.calories = result as! Double
-                        } else {
-                            self.calories = 0.0
-                            print("Error getting distance: \((result as! NSError).localizedDescription)")
-                        }
-                        
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            NSNotificationCenter.defaultCenter().postNotificationName(Notification.Activity.rawValue, object: nil)
-                        })
-                        
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        NSNotificationCenter.defaultCenter().postNotificationName(Notification.Activity.rawValue, object: nil)
                     })
+
                 })
             })
+
             
         } else {
-            manager.authorizeHealthKit({ (success, error) -> Void in
+            healthKitManager.authorizeHealthKit({ (success, error) -> Void in
                 if success {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.loadData()

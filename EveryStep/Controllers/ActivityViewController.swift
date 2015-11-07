@@ -19,10 +19,6 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var progressView: ProgressView!
     
     let currentUser = ESUserController.defaultController.currentUser()
-    
-    let healthKitManager = HKManager.defaultManager
-    let pedometerManager = CMPedometerManager.defaultManager
-    
     var session : WCSession?
     
     var steps = 0 {
@@ -110,10 +106,13 @@ class ActivityViewController: UIViewController {
     
     func loadData() {
         
+        let healthKitManager = HKManager.defaultManager
+        let pedometerManager = CMPedometerManager.defaultManager
+        
         if healthKitManager.isAuthorized {
             
             
-            CMPedometerManager.defaultManager.currentPedometerData({ (success, result) -> Void in
+            pedometerManager.currentPedometerData({ (success, result) -> Void in
                 if success == false {
                     print("Error getting step count: \(result as! NSError)")
                 } else {
@@ -131,7 +130,7 @@ class ActivityViewController: UIViewController {
                 }
             })
             
-            self.healthKitManager.activeEnergyBurned({ (success, result) -> Void in
+            healthKitManager.activeEnergyBurned({ (success, result) -> Void in
                 if success == true {
                     self.calories = result as! Double
                 } else {
