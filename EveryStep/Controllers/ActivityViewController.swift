@@ -36,6 +36,7 @@ class ActivityViewController: UIViewController {
     var calories : Double = 0.0 {
         didSet {
             currentUser.currentCalories = calories
+            self.calorieLabel.hidden = (calories == 0.0)
         }
     }
     
