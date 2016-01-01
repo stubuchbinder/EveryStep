@@ -50,6 +50,9 @@ class ActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        calorieLabel.hidden = true
+        
         startSession()
         
         // reload any data when the app returns from the background
@@ -69,6 +72,10 @@ class ActivityViewController: UIViewController {
         updateProgress()
     }
     
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
     /**
      Start watch connectivity session so that we can hand off / receive any updates to & from the watch app
      */

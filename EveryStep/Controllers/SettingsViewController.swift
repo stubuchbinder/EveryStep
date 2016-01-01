@@ -19,20 +19,6 @@ class SettingsViewController: UITableViewController {
         case Max = 2
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     @IBAction func pressedDoneButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -40,7 +26,6 @@ class SettingsViewController: UITableViewController {
     
     // MARK: - Instance Methods
 
-    
     private func displayStepGoalAlert() {
         let title = "New Goal"
         let message =  "Set a new daily step goal"
@@ -118,7 +103,7 @@ class SettingsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return Section.Max.rawValue
+        return 1 //Section.Max.rawValue
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

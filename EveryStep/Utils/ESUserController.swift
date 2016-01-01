@@ -67,7 +67,7 @@ class ESUserController {
                 self.user = ESUser()
             }
         }
-        return user!
+        return self.user!
     }
 }
 
