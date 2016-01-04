@@ -16,6 +16,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var calorieLabel: UILabel!
     @IBOutlet weak var stepCountLabel: UILabel!
     @IBOutlet weak var progressView : ProgressView!
+    @IBOutlet weak var calorieStackView: UIStackView!
     
 
     let currentUser = ESUserController.defaultController.currentUser()
@@ -35,6 +36,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     var calories : Double = 0.0 {
         didSet {
+            calorieStackView.hidden = (calories == 0.0)
             currentUser.currentCalories = calories
         }
     }
@@ -60,7 +62,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private func updateContentSize() {
         let contentWidth = self.view.bounds.width
-        let contentHeight : CGFloat = 120.0
+        let contentHeight : CGFloat = 100.0
         self.preferredContentSize = CGSize(width: contentWidth, height: contentHeight)
     }
     
