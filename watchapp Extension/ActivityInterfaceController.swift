@@ -40,8 +40,6 @@ class ActivityInterfaceController: WKInterfaceController {
     
     func activityNotification(notification : NSNotification) {
         update()
-       
-      
     }
     
     private func update() {
@@ -50,8 +48,10 @@ class ActivityInterfaceController: WKInterfaceController {
         }
         
         if let _ = distanceLabel {
-            let totalDistance = NSString(format: "%0.1f", self.currentUser.currentDistance)
-            distanceLabel!.setText(totalDistance as StringLiteralType)
+            let distance = NSString(format: "%0.1f", self.currentUser.currentDistance).floatValue
+            let miles : CGFloat = CGFloat(distance) * CGFloat(0.00062137)
+            let milesString = NSString(format: "%0.1f", miles)
+            distanceLabel!.setText(milesString as String)
         }
         
         if let _ = calorieLabel {
