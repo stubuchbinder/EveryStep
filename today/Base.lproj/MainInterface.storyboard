@@ -35,7 +35,7 @@
                                                 <rect key="frame" x="35" y="38" width="29" height="43"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJS-Ra-r8u">
-                                                        <rect key="frame" x="11" y="0.0" width="7.5" height="18"/>
+                                                        <rect key="frame" x="11" y="0.0" width="8" height="18"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
