@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 import WatchConnectivity
+import MessageUI
 
 class ActivityViewController: UIViewController {
     
@@ -240,6 +241,75 @@ class ActivityViewController: UIViewController {
         
     }
     
+    func displayRatingAlert() {
+        let vc = RatingViewController()
+        vc.delegate = self
+        self.presentViewController(vc, animated: true, completion: nil)
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(true, forKey: "rateThisApp")
+        defaults.synchronize()
+    }
+    
+}
+
+extension ActivityViewController: RatingViewControllerDelegate {
+    func ratingViewControllerDidPressFeedbackButton() {
+        
+        if MFMailComposeViewController.canSendMail() {
+            
+            let mailComposeController = MFMailComposeViewController()
+            mailComposeController.mailComposeDelegate = self
+            mailComposeController.setSubject("iOS App Feedback")
+            mailComposeController.setToRecipients(["stu@stubuchbinder.com"])
+            
+            let infoDictionary : NSDictionary = NSDictionary(dictionary: NSBundle.mainBundle().infoDictionary!)
+            
+            let appVersion = infoDictionary["CFBundleShortVersionString"] as! String
+            let model = "device model"
+            let systemVersion = UIDevice.currentDevice().systemVersion
+            let deviceInfoString = "Device Info: <font size=\"1\"><br>version: \(appVersion)<br>\(model), \(systemVersion)</font>"
+            
+            mailComposeController.setMessageBody(deviceInfoString, isHTML: true)
+            
+            self.presentViewController(mailComposeController, animated: true, completion: { () -> Void in
+                UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+            })
+            
+        } else {
+            let alertController = UIAlertController(title: "Cannot Send Mail", message: "A valid email account must be added in order to use this feature", preferredStyle: .Alert)
+            
+            alertController.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (action: UIAlertAction) -> Void in
+                
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        
+        }
+        
+
+    }
+    
+    func ratingViewControllerDidPressRateButton(rating: Int) {
+        let appId = "942810364"
+        let appURL = NSURL(string: "http://itunes.apple.com/app/id\(appId)")!
+        UIApplication.sharedApplication().openURL(appURL)
+
+    }
+    
+    func ratingViewControllerDidCancel() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(false, forKey: "rateThisApp")
+        defaults.synchronize()
+    }
+}
+
+extension ActivityViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        
+    }
 }
 
 extension ActivityViewController : WCSessionDelegate {

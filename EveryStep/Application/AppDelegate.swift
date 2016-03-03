@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    func applicationDidBecomeActive(application: UIApplication) {
+        ESUserDefaults.standardUserDefaults.incrementLaunchCount()
+        
+        if ESUserDefaults.standardUserDefaults.shouldDisplayRating() {
+            let controller = RatingViewController()
+            controller.delegate = self
+            self.window?.rootViewController?.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
     /**
         Received a local ('Idle') notification. Display an alert to the user if the app is active
     **/
@@ -56,6 +66,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
 
+
+}
+
+extension AppDelegate : RatingViewControllerDelegate {
+    func ratingViewControllerDidCancel() {
+        ESUserDefaults.standardUserDefaults.resetLaunchCount()
+    }
+    
+    func ratingViewControllerDidPressFeedbackButton() {
+        if MFMailComposeViewController.canSendMail() {
+            
+            let mailComposeController = MFMailComposeViewController()
+            mailComposeController.mailComposeDelegate = self
+            mailComposeController.setSubject("iOS App Feedback")
+            mailComposeController.setToRecipients(["stu@stubuchbinder.com"])
+            
+            let infoDictionary : NSDictionary = NSDictionary(dictionary: NSBundle.mainBundle().infoDictionary!)
+            let appVersion = infoDictionary["CFBundleShortVersionString"] as! String
+            let model = "device model"
+            let systemVersion = UIDevice.currentDevice().systemVersion
+            let deviceInfoString = "Device Info: <font size=\"1\"><br>version: \(appVersion)<br>\(model), \(systemVersion)</font>"
+            
+            mailComposeController.setMessageBody(deviceInfoString, isHTML: true)
+            
+            self.window?.rootViewController?.presentViewController(mailComposeController, animated: true, completion: { () -> Void in
+                UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+            })
+            
+        } else {
+//            UIAlertView(title: "Cannot Send Mail", message: "A valid email account must be added in order to use this feature", delegate: nil, cancelButtonTitle: "OK").show()
+        }
+
+    }
+    
+    func ratingViewControllerDidPressRateButton(rating: Int) {
+        let appUrlString = "https://itunes.apple.com/us/app/every-step/id942810364"
+        UIApplication.sharedApplication().openURL(NSURL(string: appUrlString)!)
+    }
+}
+
+extension AppDelegate: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        
+        self.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }
 

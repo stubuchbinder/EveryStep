@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200840EC1C87A8E4005F42AF /* ESUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200840EB1C87A8E4005F42AF /* ESUserDefaults.swift */; };
 		201D8AB31BCC034200FA276F /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201D8AB21BCC034200FA276F /* CoreActionSheetPicker.framework */; };
 		20203A091BC565D7008BBDEB /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
 		202751691BC5726900893C47 /* ESUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACD1BB350B70031DF55 /* ESUserController.swift */; };
@@ -45,6 +46,9 @@
 		20A4B6B11BEE5436003DFF5D /* NSDate+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B6AF1BEE5436003DFF5D /* NSDate+EveryStep.swift */; };
 		20A4B6B21BEE5436003DFF5D /* NSDate+EveryStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B6AF1BEE5436003DFF5D /* NSDate+EveryStep.swift */; };
 		20B6640F1BC857BE00D22564 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B6640E1BC857BE00D22564 /* TextFieldCell.swift */; };
+		20BFCE5C1C654DF7007BB8B9 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFCE5B1C654DF7007BB8B9 /* RatingViewController.swift */; };
+		20BFCE5E1C654E04007BB8B9 /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20BFCE5D1C654E04007BB8B9 /* RatingViewController.xib */; };
+		20BFCE601C654E18007BB8B9 /* RatingAlertTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFCE5F1C654E18007BB8B9 /* RatingAlertTransitioner.swift */; };
 		20CEE3721BB4645B007D069B /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CEE3711BB4645B007D069B /* HKManager.swift */; };
 		20CEE3741BB46F5D007D069B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CEE3731BB46F5D007D069B /* HealthKit.framework */; };
 		20E7769F1BCD7DD100E69860 /* GoalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2062CACB1BB34E770031DF55 /* GoalButton.swift */; };
@@ -113,6 +117,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		200840EB1C87A8E4005F42AF /* ESUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESUserDefaults.swift; sourceTree = "<group>"; };
 		201D8AB21BCC034200FA276F /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		2027516D1BC578BA00893C47 /* watchapp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchapp Extension.entitlements"; sourceTree = "<group>"; };
 		2042645C1BC5B00800FAE77F /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -146,6 +151,9 @@
 		20A4B6AB1BEE5375003DFF5D /* CMPedometerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMPedometerManager.swift; sourceTree = "<group>"; };
 		20A4B6AF1BEE5436003DFF5D /* NSDate+EveryStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+EveryStep.swift"; sourceTree = "<group>"; };
 		20B6640E1BC857BE00D22564 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		20BFCE5B1C654DF7007BB8B9 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		20BFCE5D1C654E04007BB8B9 /* RatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
+		20BFCE5F1C654E18007BB8B9 /* RatingAlertTransitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingAlertTransitioner.swift; sourceTree = "<group>"; };
 		20CEE3711BB4645B007D069B /* HKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKManager.swift; sourceTree = "<group>"; };
 		20CEE3731BB46F5D007D069B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		20CEE3751BB46F5D007D069B /* EveryStep.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EveryStep.entitlements; sourceTree = "<group>"; };
@@ -244,6 +252,7 @@
 				206EC9DE1B8F5EE40073D766 /* Assets.xcassets */,
 				206EC9DF1B8F5EE40073D766 /* LaunchScreen.storyboard */,
 				206EC9E01B8F5EE40073D766 /* Main.storyboard */,
+				20BFCE5D1C654E04007BB8B9 /* RatingViewController.xib */,
 				206EC9EC1B8F60630073D766 /* ProgressView.swift */,
 				2062CACB1BB34E770031DF55 /* GoalButton.swift */,
 				20B6640E1BC857BE00D22564 /* TextFieldCell.swift */,
@@ -262,6 +271,8 @@
 		206EC9E61B8F5F0D0073D766 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				20BFCE5B1C654DF7007BB8B9 /* RatingViewController.swift */,
+				20BFCE5F1C654E18007BB8B9 /* RatingAlertTransitioner.swift */,
 				206EC9E81B8F5F3A0073D766 /* ActivityViewController.swift */,
 				206EC9EA1B8F5F530073D766 /* SettingsViewController.swift */,
 			);
@@ -275,6 +286,7 @@
 				2062CACD1BB350B70031DF55 /* ESUserController.swift */,
 				20CEE3711BB4645B007D069B /* HKManager.swift */,
 				20A4B6AB1BEE5375003DFF5D /* CMPedometerManager.swift */,
+				200840EB1C87A8E4005F42AF /* ESUserDefaults.swift */,
 			);
 			name = "Utils (Shared)";
 			path = Utils;
@@ -470,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				206EC9E31B8F5EE40073D766 /* Main.storyboard in Resources */,
+				20BFCE5E1C654E04007BB8B9 /* RatingViewController.xib in Resources */,
 				206EC9E11B8F5EE40073D766 /* Assets.xcassets in Resources */,
 				206EC9E21B8F5EE40073D766 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -536,13 +549,16 @@
 				2062CACE1BB350B70031DF55 /* ESUserController.swift in Sources */,
 				20A4B6B01BEE5436003DFF5D /* NSDate+EveryStep.swift in Sources */,
 				20B6640F1BC857BE00D22564 /* TextFieldCell.swift in Sources */,
+				20BFCE5C1C654DF7007BB8B9 /* RatingViewController.swift in Sources */,
 				206EC9E71B8F5F0D0073D766 /* AppDelegate.swift in Sources */,
 				206EC9ED1B8F60630073D766 /* ProgressView.swift in Sources */,
 				206EC9F31B8F60F80073D766 /* UIColor+EveryStep.swift in Sources */,
 				20CEE3721BB4645B007D069B /* HKManager.swift in Sources */,
 				206EC9E91B8F5F3A0073D766 /* ActivityViewController.swift in Sources */,
 				206EC9EB1B8F5F530073D766 /* SettingsViewController.swift in Sources */,
+				20BFCE601C654E18007BB8B9 /* RatingAlertTransitioner.swift in Sources */,
 				20A4B6AC1BEE5375003DFF5D /* CMPedometerManager.swift in Sources */,
+				200840EC1C87A8E4005F42AF /* ESUserDefaults.swift in Sources */,
 				2062CAD01BB358920031DF55 /* NSNumber+EveryStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

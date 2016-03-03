@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RatingViewController" customModule="EveryStep" customModuleProvider="target">
+            <connections>
+                <outlet property="StarContentView" destination="lvT-s7-sfh" id="jDU-Rr-d8o"/>
+                <outlet property="cancelButton" destination="mTC-kt-Trl" id="Mr9-6f-v1o"/>
+                <outlet property="messageLabel" destination="RUy-i8-30o" id="zo6-B7-Epf"/>
+                <outlet property="rateButton" destination="AaR-nI-RcX" id="E1d-Hv-zSH"/>
+                <outlet property="star1" destination="y7y-h1-To9" id="kFs-SJ-H6V"/>
+                <outlet property="star2" destination="Oic-Qg-0ln" id="JGt-zw-NIj"/>
+                <outlet property="star3" destination="lSO-6p-nTH" id="2RK-n3-1Tg"/>
+                <outlet property="star4" destination="1FW-Ee-FbO" id="64y-3m-3N6"/>
+                <outlet property="star5" destination="b4Z-PF-tzG" id="UK4-vL-fq8"/>
+                <outlet property="titleLabel" destination="fgm-QC-dOl" id="VwS-Dv-C5h"/>
+                <outlet property="view" destination="tGq-1c-ldZ" id="zHl-iR-ndz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="tGq-1c-ldZ">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Love Every Step?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgm-QC-dOl">
+                    <rect key="frame" x="10" y="10" width="280" height="24"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lvT-s7-sfh" userLabel="StarRatingView">
+                    <rect key="frame" x="10" y="89" width="280" height="30"/>
+                    <subviews>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4Z-PF-tzG" userLabel="Star5">
+                            <rect key="frame" x="190" y="5" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="JTa-gN-fot"/>
+                                <constraint firstAttribute="height" constant="20" id="Pzk-a7-tOd"/>
+                            </constraints>
+                            <state key="normal" image="StarFull"/>
+                            <state key="highlighted" image="StarFull"/>
+                            <state key="focused" image="StarFull"/>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <mask key="constraints">
+                                    <exclude reference="JTa-gN-fot"/>
+                                    <exclude reference="Pzk-a7-tOd"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="pressedStarButton:" destination="-1" eventType="touchUpInside" id="9pb-uC-DaF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7y-h1-To9" userLabel="Star1">
+                            <rect key="frame" x="70" y="5" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="7SY-ms-yTT"/>
+                                <constraint firstAttribute="width" constant="20" id="UXD-Nv-BoQ"/>
+                            </constraints>
+                            <state key="normal" image="StarFull"/>
+                            <state key="highlighted" image="StarFull"/>
+                            <state key="focused" image="StarFull"/>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <mask key="constraints">
+                                    <exclude reference="7SY-ms-yTT"/>
+                                    <exclude reference="UXD-Nv-BoQ"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="pressedStarButton:" destination="-1" eventType="touchUpInside" id="X87-NL-KX6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oic-Qg-0ln" userLabel="Star2">
+                            <rect key="frame" x="100" y="5" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="5FQ-NN-6La"/>
+                                <constraint firstAttribute="height" constant="20" id="e8C-3W-Ux2"/>
+                            </constraints>
+                            <state key="normal" image="StarFull"/>
+                            <state key="highlighted" image="StarFull"/>
+                            <state key="focused" image="StarFull"/>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <mask key="constraints">
+                                    <exclude reference="5FQ-NN-6La"/>
+                                    <exclude reference="e8C-3W-Ux2"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="pressedStarButton:" destination="-1" eventType="touchUpInside" id="FnC-YU-SmX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSO-6p-nTH" userLabel="Star3">
+                            <rect key="frame" x="130" y="5" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="pBb-6c-5DE"/>
+                                <constraint firstAttribute="width" constant="20" id="pkq-5O-aZI"/>
+                            </constraints>
+                            <state key="normal" image="StarFull"/>
+                            <state key="highlighted" image="StarFull"/>
+                            <state key="focused" image="StarFull"/>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <mask key="constraints">
+                                    <exclude reference="pBb-6c-5DE"/>
+                                    <exclude reference="pkq-5O-aZI"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="pressedStarButton:" destination="-1" eventType="touchUpInside" id="x16-BB-Ojt"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1FW-Ee-FbO" userLabel="Star4">
+                            <rect key="frame" x="160" y="5" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="dC6-FN-A4c"/>
+                                <constraint firstAttribute="width" constant="20" id="gdd-bB-en3"/>
+                            </constraints>
+                            <state key="normal" image="StarFull"/>
+                            <state key="highlighted" image="StarFull"/>
+                            <state key="focused" image="StarFull"/>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <mask key="constraints">
+                                    <exclude reference="dC6-FN-A4c"/>
+                                    <exclude reference="gdd-bB-en3"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="pressedStarButton:" destination="-1" eventType="touchUpInside" id="2BW-MQ-uPQ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="bottom" secondItem="b4Z-PF-tzG" secondAttribute="bottom" id="2MC-tz-liw"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="bottom" secondItem="lSO-6p-nTH" secondAttribute="bottom" id="3go-2g-J6l"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="leading" secondItem="y7y-h1-To9" secondAttribute="trailing" constant="10" id="3xt-Fv-jxB"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="leading" secondItem="y7y-h1-To9" secondAttribute="trailing" constant="10" id="80G-HB-jwo"/>
+                        <constraint firstItem="b4Z-PF-tzG" firstAttribute="leading" secondItem="1FW-Ee-FbO" secondAttribute="trailing" constant="8" symbolic="YES" id="8tb-la-2VZ"/>
+                        <constraint firstItem="lSO-6p-nTH" firstAttribute="centerX" secondItem="lvT-s7-sfh" secondAttribute="centerX" id="EHy-pw-vTc"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="leading" secondItem="lvT-s7-sfh" secondAttribute="leading" constant="102" id="EnS-aH-8Bg"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="top" secondItem="1FW-Ee-FbO" secondAttribute="top" id="FcJ-SI-OUs"/>
+                        <constraint firstItem="b4Z-PF-tzG" firstAttribute="leading" secondItem="1FW-Ee-FbO" secondAttribute="trailing" constant="10" id="HhQ-xX-vsF"/>
+                        <constraint firstItem="lSO-6p-nTH" firstAttribute="leading" secondItem="Oic-Qg-0ln" secondAttribute="trailing" constant="10" id="KV4-hJ-4XF"/>
+                        <constraint firstItem="lSO-6p-nTH" firstAttribute="centerY" secondItem="lvT-s7-sfh" secondAttribute="centerY" id="Kuy-El-eZg"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="centerY" secondItem="lvT-s7-sfh" secondAttribute="centerY" id="PKY-q4-VLW"/>
+                        <constraint firstItem="1FW-Ee-FbO" firstAttribute="leading" secondItem="lSO-6p-nTH" secondAttribute="trailing" constant="10" id="Pme-BW-6WO"/>
+                        <constraint firstItem="lSO-6p-nTH" firstAttribute="leading" secondItem="Oic-Qg-0ln" secondAttribute="trailing" constant="10" id="QVX-vk-if2"/>
+                        <constraint firstAttribute="height" constant="30" id="TTb-NB-ZNv"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="bottom" secondItem="y7y-h1-To9" secondAttribute="bottom" id="YpA-eP-Skq"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="bottom" secondItem="1FW-Ee-FbO" secondAttribute="bottom" id="YzI-WB-Ol6"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="top" secondItem="y7y-h1-To9" secondAttribute="top" id="d1B-gJ-cw4"/>
+                        <constraint firstAttribute="height" constant="30" id="gfj-Ui-N9a"/>
+                        <constraint firstItem="1FW-Ee-FbO" firstAttribute="leading" secondItem="lSO-6p-nTH" secondAttribute="trailing" constant="10" id="hSM-Ti-Ztp"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="centerY" secondItem="lvT-s7-sfh" secondAttribute="centerY" id="j2J-hh-LGF"/>
+                        <constraint firstItem="1FW-Ee-FbO" firstAttribute="centerY" secondItem="lvT-s7-sfh" secondAttribute="centerY" id="nSX-9r-cUf"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="top" secondItem="lSO-6p-nTH" secondAttribute="top" id="pkl-Uw-ekO"/>
+                        <constraint firstItem="y7y-h1-To9" firstAttribute="centerY" secondItem="lvT-s7-sfh" secondAttribute="centerY" id="qg5-lx-hTi"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="top" secondItem="lvT-s7-sfh" secondAttribute="top" constant="5" id="rc4-yL-Aom"/>
+                        <constraint firstItem="b4Z-PF-tzG" firstAttribute="centerY" secondItem="lvT-s7-sfh" secondAttribute="centerY" id="v5X-Eb-3WL"/>
+                        <constraint firstItem="Oic-Qg-0ln" firstAttribute="top" secondItem="b4Z-PF-tzG" secondAttribute="top" id="yFJ-D5-ovY"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="gfj-Ui-N9a"/>
+                            <exclude reference="2MC-tz-liw"/>
+                            <exclude reference="3go-2g-J6l"/>
+                            <exclude reference="80G-HB-jwo"/>
+                            <exclude reference="EnS-aH-8Bg"/>
+                            <exclude reference="FcJ-SI-OUs"/>
+                            <exclude reference="PKY-q4-VLW"/>
+                            <exclude reference="YpA-eP-Skq"/>
+                            <exclude reference="YzI-WB-Ol6"/>
+                            <exclude reference="d1B-gJ-cw4"/>
+                            <exclude reference="pkl-Uw-ekO"/>
+                            <exclude reference="rc4-yL-Aom"/>
+                            <exclude reference="yFJ-D5-ovY"/>
+                            <exclude reference="KV4-hJ-4XF"/>
+                            <exclude reference="hSM-Ti-Ztp"/>
+                            <exclude reference="8tb-la-2VZ"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <mask key="constraints">
+                            <exclude reference="TTb-NB-ZNv"/>
+                            <include reference="gfj-Ui-N9a"/>
+                            <exclude reference="qg5-lx-hTi"/>
+                            <include reference="2MC-tz-liw"/>
+                            <include reference="3go-2g-J6l"/>
+                            <exclude reference="3xt-Fv-jxB"/>
+                            <include reference="80G-HB-jwo"/>
+                            <include reference="EnS-aH-8Bg"/>
+                            <include reference="FcJ-SI-OUs"/>
+                            <include reference="PKY-q4-VLW"/>
+                            <include reference="YpA-eP-Skq"/>
+                            <include reference="YzI-WB-Ol6"/>
+                            <include reference="d1B-gJ-cw4"/>
+                            <exclude reference="j2J-hh-LGF"/>
+                            <include reference="pkl-Uw-ekO"/>
+                            <include reference="rc4-yL-Aom"/>
+                            <include reference="yFJ-D5-ovY"/>
+                            <exclude reference="EHy-pw-vTc"/>
+                            <include reference="KV4-hJ-4XF"/>
+                            <exclude reference="Kuy-El-eZg"/>
+                            <exclude reference="QVX-vk-if2"/>
+                            <exclude reference="Pme-BW-6WO"/>
+                            <include reference="hSM-Ti-Ztp"/>
+                            <exclude reference="nSX-9r-cUf"/>
+                            <include reference="8tb-la-2VZ"/>
+                            <exclude reference="HhQ-xX-vsF"/>
+                            <exclude reference="v5X-Eb-3WL"/>
+                        </mask>
+                    </variation>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaR-nI-RcX">
+                    <rect key="frame" x="150" y="160" width="150" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="jAN-ev-c55"/>
+                    </constraints>
+                    <state key="normal" title="Rate"/>
+                    <connections>
+                        <action selector="pressedRateButton:" destination="-1" eventType="touchUpInside" id="pNh-vh-8aC"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTC-kt-Trl">
+                    <rect key="frame" x="0.0" y="160" width="150" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="nnB-St-S10"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="pressedCancelButton:" destination="-1" eventType="touchUpInside" id="krg-VQ-ZpD"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please let us know what you think of this version of Every Step (this message will appear once)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUy-i8-30o">
+                    <rect key="frame" x="10" y="46" width="280" height="33"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fgm-QC-dOl" secondAttribute="trailing" constant="10" id="2bf-BJ-reF"/>
+                <constraint firstItem="fgm-QC-dOl" firstAttribute="top" secondItem="tGq-1c-ldZ" secondAttribute="top" constant="10" id="3oq-tu-prB"/>
+                <constraint firstItem="mTC-kt-Trl" firstAttribute="width" secondItem="tGq-1c-ldZ" secondAttribute="width" multiplier="0.5" id="41S-xA-SBS"/>
+                <constraint firstItem="lvT-s7-sfh" firstAttribute="leading" secondItem="tGq-1c-ldZ" secondAttribute="leading" constant="10" id="6p4-ef-696"/>
+                <constraint firstAttribute="bottom" secondItem="AaR-nI-RcX" secondAttribute="bottom" id="98n-FC-rgb"/>
+                <constraint firstAttribute="trailing" secondItem="RUy-i8-30o" secondAttribute="trailing" constant="10" id="Gxj-tF-d2Q"/>
+                <constraint firstAttribute="trailing" secondItem="lvT-s7-sfh" secondAttribute="trailing" constant="10" id="IYe-RE-lDk"/>
+                <constraint firstItem="fgm-QC-dOl" firstAttribute="leading" secondItem="tGq-1c-ldZ" secondAttribute="leading" constant="10" id="Jzb-VO-eaq"/>
+                <constraint firstItem="RUy-i8-30o" firstAttribute="leading" secondItem="tGq-1c-ldZ" secondAttribute="leading" constant="10" id="N8K-KL-iBW"/>
+                <constraint firstAttribute="bottom" secondItem="mTC-kt-Trl" secondAttribute="bottom" id="XdX-ap-3W5"/>
+                <constraint firstItem="RUy-i8-30o" firstAttribute="top" secondItem="fgm-QC-dOl" secondAttribute="bottom" constant="12" id="be4-8A-0YP"/>
+                <constraint firstItem="mTC-kt-Trl" firstAttribute="leading" secondItem="tGq-1c-ldZ" secondAttribute="leading" id="kwH-UA-x3X"/>
+                <constraint firstItem="AaR-nI-RcX" firstAttribute="width" secondItem="tGq-1c-ldZ" secondAttribute="width" multiplier="0.5" id="sWM-dF-GLy"/>
+                <constraint firstAttribute="trailing" secondItem="AaR-nI-RcX" secondAttribute="trailing" id="sgu-Fw-PQb"/>
+                <constraint firstItem="lvT-s7-sfh" firstAttribute="top" secondItem="RUy-i8-30o" secondAttribute="bottom" constant="10" id="ul2-lu-zRe"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="4619" y="-283"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="StarFull" width="20" height="20"/>
+    </resources>
+</document>

@@ -10,7 +10,7 @@ import Foundation
 
 
 // MARK: - ESUserController
-class ESUserController {
+class ESUserController: NSObject {
     
     let URL_PATH = "EVERYSTEP_USER"
     private var user : ESUser?
@@ -26,6 +26,13 @@ class ESUserController {
         return Singleton.instance
     }
     
+    override init() {
+        super.init()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(false, forKey: "rateThisApp")
+        defaults.setValue("0", forKey: "launchCount")
+        defaults.synchronize()
+    }
     
     /**
         Save the user to disk with closure
